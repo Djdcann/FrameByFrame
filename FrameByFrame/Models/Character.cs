@@ -8,9 +8,16 @@ namespace FrameByFrame.Models
     public class Character
     {
         int ID { get; set; }
-        string Name { get; set; }
-        string imageFile { get; set; }
+        public string Name { get; set; }
+        public string imageFile { get; set; }
         object Properties { get; set; }
-        List<Action> Actions { get; set; }
+        public List<Action> Actions { get; set; }
+
+        public Character(int ID, string Name, string imageFile)
+        {
+            this.ID = ID;
+            this.Name = Name;
+            this.imageFile = imageFile;
+        }
     }
 }
