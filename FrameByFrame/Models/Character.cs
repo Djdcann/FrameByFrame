@@ -7,9 +7,9 @@ namespace FrameByFrame.Models
 {
     public class Character
     {
-        int ID;
-        string Name;
-        string imageFile;
+        int ID { get; set; }
+        string Name { get; set; }
+        string imageFile { get; set; }
         object Properties { get; set; }
         List<Action> Actions { get; set; }
     }
