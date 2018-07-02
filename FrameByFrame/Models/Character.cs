@@ -10,7 +10,7 @@ namespace FrameByFrame.Models
         int ID { get; set; }
         public string Name { get; set; }
         public string imageFile { get; set; }
-        object Properties { get; set; }
+        public CharacterProperties Properties { get; set; }
         public List<Action> Actions { get; set; }
 
         public Character(int ID, string Name, string imageFile)
@@ -18,6 +18,10 @@ namespace FrameByFrame.Models
             this.ID = ID;
             this.Name = Name;
             this.imageFile = imageFile;
+
+            Actions.Where(x => x.type == ActionType.Normal);
         }
+
+
     }
 }
