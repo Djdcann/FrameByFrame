@@ -18,8 +18,6 @@ namespace FrameByFrame.Models
             this.ID = ID;
             this.Name = Name;
             this.imageFile = imageFile;
-
-            Actions.Where(x => x.type == ActionType.Normal);
         }
 
 
