@@ -26,6 +26,17 @@
     margin: 15px;
 }
 
+td {
+    border: 2px solid black;
+    border-radius: 20px;
+    border-collapse: separate;
+    border-spacing: 10px;
+}
+
+td img {
+    width: 100%;
+}
+
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
     /* Hide captions */
