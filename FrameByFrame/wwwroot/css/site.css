@@ -6,8 +6,8 @@
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 /* Carousel */
@@ -26,16 +26,29 @@
     margin: 15px;
 }
 
-td {
-    border: 2px solid black;
-    border-radius: 20px;
+table {
     border-collapse: separate;
-    border-spacing: 10px;
+    border-spacing: 5px;
 }
 
-td img {
-    width: 100%;
+td {
+    border: 5px solid silver;
+    border-radius: 15px;
+    padding-bottom: 5px;
+    background-color: black;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: .75vw;
 }
+
+    td img {
+        width: 100%;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        background: linear-gradient(to bottom, midnightblue, dodgerblue);
+        margin-bottom: 5px;
+    }
 
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
