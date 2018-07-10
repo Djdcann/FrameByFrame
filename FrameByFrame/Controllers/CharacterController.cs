@@ -11,13 +11,14 @@ namespace FrameByFrame.Controllers
     {
         public IActionResult Index(string id)
         {
-            return View();
+            Character c = new Character(3, "Falco", "/images/portraits/falco.png");
+            return View(c);
         }
 
         public IActionResult Character(string id)
         {
-            Character c = new Character(3, "Falco", "/images/portraits/falco.png");
-            return View(c);
+            
+            return View();
         }
     }
 }
