@@ -12,6 +12,8 @@ namespace FrameByFrame.Controllers
         public IActionResult Index(string id)
         {
             Character c = new Character(3, "Falco", "/images/portraits/falco.png");
+            c.Actions = new List<FrameByFrame.Models.Action>();
+            c.Actions.Add(new NormalAttack("U-tilt", new int[] { 4, 12 }, 24, 25));
             return View(c);
         }
 
