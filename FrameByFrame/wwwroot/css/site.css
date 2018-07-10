@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #101010;
 }
 
 /* Wrapping element */
@@ -19,6 +20,24 @@
 /* Make .svg files in the carousel display properly in older browsers */
 .carousel-inner .item img[src$=".svg"] {
     width: 100%;
+}
+
+.logo {
+    height: 30px;
+}
+
+.navbar {
+    height: 60px;
+    background-color: #303030;
+}
+
+.navbar-brand {
+    padding: 15px 10px;
+    height: 60px;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    height: 60px;
 }
 
 /* QR code generator */
@@ -40,6 +59,15 @@ td {
     text-transform: uppercase;
     font-weight: bold;
     font-size: .75vw;
+}
+
+td:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+td:hover img {
+    background: white;
 }
 
     td img {
