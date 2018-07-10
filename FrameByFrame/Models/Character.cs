@@ -12,7 +12,7 @@ namespace FrameByFrame.Models
 
         int ID { get; set; }
         public string Name { get; set; }
-        public string ImageFile { get; set; }
+        protected string ImageFile { get; set; }
         public CharacterProperties Properties { get; set; }
         public List<Action> Actions { get; set; }
 
