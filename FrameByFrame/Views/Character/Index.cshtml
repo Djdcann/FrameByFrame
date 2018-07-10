@@ -1,0 +1,28 @@
+﻿@model FrameByFrame.Models.Character
+
+@{
+    ViewData["Title"] = "Character";
+}
+
+<h2>Character</h2>
+
+<div>
+    <h4>Character</h4>
+    <hr />
+    <dl class="dl-horizontal">
+    </dl>
+</div>
+<div>
+    @Model.Name
+    <img src="@Model.imageFile" />
+</div>
+@{ 
+    foreach(FrameByFrame.Models.Action a in Model.Actions.Where(x => x.Type == ActionType.Normal)) // get all normal attacks
+    {
+        <div>@a.Name</div>
+    }
+}
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

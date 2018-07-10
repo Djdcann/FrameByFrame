@@ -41,9 +41,17 @@ namespace FrameByFrame
 
             app.UseMvc(routes =>
             {
+                //Override route configuration for the Character Controller
+                routes.MapRoute(
+                    name: "Character",
+                    template: "Character/{id}",
+                    defaults: new { controller = "Character", action = "Index", id = "Falco"}
+                );
+
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller}/{action}/{id?}",
+                    defaults: new { controller = "Home", action = "Index"});
             });
         }
     }
