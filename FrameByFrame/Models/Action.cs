@@ -7,19 +7,29 @@ namespace FrameByFrame.Models
 {
     public abstract class Action
     {
-        public string Name { get; set; }
         public ActionType Type { get; set; }
-        public int[] StateChange { get; set; }
+        public string Name { get; set; }
         public int Total { get; set; }
+        public int[] StateChange { get; set; }
         public int FAF { get; set; }
 
-        public Action(string Name,  int[] StateChange, int Total, int FAF, ActionType Type)
+        public Action(string Name, int Total, int[] StateChange, int FAF, ActionType Type)
         {
-            this.Name = Name;
             this.Type = Type;
-            this.StateChange = StateChange;
+            this.Name = Name;
             this.Total = Total;
+            this.StateChange = StateChange;
             this.FAF = FAF;
+        }
+
+        public virtual int getStartup()
+        {
+            return StateChange[0];
+        }
+
+        public virtual int getEndlag()
+        {
+            return FAF - StateChange[StateChange.Length - 1];
         }
     }
 

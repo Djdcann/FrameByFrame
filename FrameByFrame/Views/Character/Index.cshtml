@@ -14,15 +14,19 @@
 </div>
 <div>
     @Model.Name
-    <img src="@Model.imageFile" />
+    <img src="@Model.getImagePath()" />
 </div>
 @{ 
-    foreach(FrameByFrame.Models.Action a in Model.Actions.Where(x => x.Type == ActionType.Normal)) // get all normal attacks
+    foreach(SmashAttack a in Model.Actions.Where(x => x.Type == ActionType.Smash)) // get all normal attacks
     {
         <div>@a.Name</div>
+        <div>@a.ChargeFrame</div>
+
     }
 }
 <div>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     <a asp-action="Index">Back to List</a>
 </div>
+<br/>
+<div>@Model.getJson()</div>
