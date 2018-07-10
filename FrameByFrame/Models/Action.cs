@@ -7,8 +7,8 @@ namespace FrameByFrame.Models
 {
     public abstract class Action
     {
-        public string Name { get; set; }
         public ActionType Type { get; set; }
+        public string Name { get; set; }
         public int[] StateChange { get; set; }
         public int Total { get; set; }
         public int FAF { get; set; }

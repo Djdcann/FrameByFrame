@@ -15,11 +15,11 @@ namespace FrameByFrame.Models
 
     public class SmashAttack : Action
     {
-        public int ChargeFrame { get; set; }
         public SmashAttack(string Name, int[] StateChange, int Total, int FAF, int ChargeFrame) : base(Name, StateChange, Total, FAF, ActionType.Smash)
         {
             this.ChargeFrame = ChargeFrame;
         }
+        public int ChargeFrame { get; set; }
     }
 
     public class AerialAttack : Action
