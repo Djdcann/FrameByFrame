@@ -12,12 +12,29 @@ namespace FrameByFrame.Controllers
         public IActionResult Index(string id)
         {
             Character c = new Character(3, "Falco", "falco.png");
-            c.Actions = new List<FrameByFrame.Models.Action>();
-            c.Actions.Add(new NormalAttack("U-tilt", new int[] { 5, 12 }, 23, 23));
-            c.Actions.Add(new NormalAttack("F-tilt", new int[] { 5, 10 }, 26, 27));
-            c.Actions.Add(new NormalAttack("D-tilt", new int[] { 7, 10 }, 29, 28));
-            c.Actions.Add(new NormalAttack("Dash Attack", new int[] { 4, 18 }, 39, 36));
-            c.Actions.Add(new SmashAttack("U-smash", new int[] { 4, 12 }, 24, 25, 4));
+            c.Actions.Add(new NormalAttack("U-tilt",        23, new int[2] { 5, 12 },   23));
+            c.Actions.Add(new NormalAttack("F-tilt",        26, new int[2] { 5, 10 },   27));
+            c.Actions.Add(new NormalAttack("D-tilt",        29, new int[2] { 7, 10 },   28));
+            c.Actions.Add(new NormalAttack("Dash Attack",   39, new int[2] { 4, 18 },   36));
+            c.Actions.Add(new SmashAttack("U-smash",        43, new int[2] { 7, 16 },   44, 2));
+            c.Actions.Add(new SmashAttack("F-smash",        39, new int[2] { 12, 22 },  40, 7));
+            c.Actions.Add(new SmashAttack("D-smash",        49, new int[2] { 6, 11 },   46, 2));
+            c.Actions.Add(new AerialAttack("N-air",         49, new int[2] { 4, 32 },   42, 15, new int[2] { 3, 37 }));
+            c.Actions.Add(new AerialAttack("U-air",         39, new int[4] { 8, 10, 11, 15 },   36, 18, new int[2] { 7, 26 }));
+            c.Actions.Add(new AerialAttack("F-air",         59, new int[10] { 6, 9, 16, 19, 24, 27, 33, 36, 43, 46 },   53, 22, new int[2] { 5, 49 }));
+            c.Actions.Add(new AerialAttack("B-air",         39, new int[2] { 4, 20 },   38, 20, new int[2] { 3, 23 }));
+            c.Actions.Add(new AerialAttack("D-air",         49, new int[2] { 5, 25 },   50, 18, new int[2] { 4, 30 }));
+            c.Actions.Add(new Grab("Standing Grab", 30, new int[2] { 7, 9 }, 31));
+            c.Actions.Add(new Grab("Dash Grab", 40, new int[2] { 12, 14 }, 41));
+
+            c.Actions.Add(new SpecialAttack("Ground Laser", 57, new int[2] { 23, 47 }, 58));
+            c.Actions.Add(new SpecialAttack("Air Laser", 42, new int[2] { 13, 29 }, 43));
+            c.Actions.Add(new SpecialAttack("Phantasm", 59, new int[2] { 18, 22 }, 60));
+            c.Actions.Add(new SpecialAttack("Firebird", 84, new int[2] { 43, 65 }, 85));
+            c.Actions.Add(new SpecialAttack("Shine", 39, new int[2] { 1, 2 }, 4));
+            c.Properties = new CharacterProperties { Jumpsquat = 4, Dash = 11, SHAirtime = 25, FHAirtime = 51, Landlag = 4, AirJumps = 1, Taunt = 114 };
+
+
             return View(c);
         }
 

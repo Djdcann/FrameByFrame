@@ -12,15 +12,17 @@ namespace FrameByFrame.Models
 
         int ID { get; set; }
         public string Name { get; set; }
-        public string imageFile { get; set; }
+        public string ImageFile { get; set; }
         public CharacterProperties Properties { get; set; }
         public List<Action> Actions { get; set; }
 
-        public Character(int ID, string Name, string imageFile)
+        public Character(int ID, string Name, string ImageFile)
         {
             this.ID = ID;
             this.Name = Name;
-            this.imageFile = imageFile;
+            this.ImageFile = ImageFile;
+            this.Properties = new CharacterProperties();
+            this.Actions = new List<Action>();
         }
 
         public string getJson()
@@ -32,7 +34,7 @@ namespace FrameByFrame.Models
 
         public string getImagePath()
         {
-            return imagePath + imageFile;
+            return imagePath + ImageFile;
         }
     }
 }
