@@ -17,16 +17,16 @@
     <img src="@Model.getImagePath()" />
 </div>
 <table>
-    <tr><th>Jumpsquat</th><td>@Model.Properties.Jumpsquat</td></tr>
-    <tr><th>Dash</th><td>@Model.Properties.Dash</td></tr>
-    <tr><th>Landlag</th><td>@Model.Properties.Landlag</td></tr>
-    <tr><th>SHAirtime</th><td>@Model.Properties.SHAirtime</td></tr>
-    <tr><th>FHAirtime</th><td>@Model.Properties.FHAirtime</td></tr>
-    <tr><th>AirJumps</th><td>@Model.Properties.AirJumps</td></tr>
-    <tr><th>Taunt Frames</th><td>@Model.Properties.Taunt</td></tr>
+    <tr><th>Jumpsquat</th><td>@Model.Attributes.Jumpsquat</td></tr>
+    <tr><th>Dash</th><td>@Model.Attributes.Dash</td></tr>
+    <tr><th>Landlag</th><td>@Model.Attributes.Landlag</td></tr>
+    <tr><th>SHAirtime</th><td>@Model.Attributes.SHAirtime</td></tr>
+    <tr><th>FHAirtime</th><td>@Model.Attributes.FHAirtime</td></tr>
+    <tr><th>AirJumps</th><td>@Model.Attributes.AirJumps</td></tr>
+    <tr><th>Taunt Frames</th><td>@Model.Attributes.Taunt</td></tr>
 </table>
 @{ 
-    foreach(SmashAttack a in Model.Actions.Where(x => x.Type == ActionType.Smash)) // get all normal attacks
+    foreach(Smash a in Model.Smashes) // get all normal attacks
     {
         <div>@a.Name</div>
         <div>@a.ChargeFrame</div>
