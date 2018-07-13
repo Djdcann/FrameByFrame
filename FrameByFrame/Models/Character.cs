@@ -9,7 +9,7 @@ namespace FrameByFrame.Models
     public class Character
     {
         private string imagePath = "/images/portraits/";
-        private string jsonPath = "/chardata/";
+        private string jsonPath = "chardata/";
 
         public int ID { get; set; }
         public string Name { get; set; }
