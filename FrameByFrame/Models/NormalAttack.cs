@@ -13,6 +13,19 @@ namespace FrameByFrame.Models
         }
     }
 
+    public class Jab : Action
+    {
+        public int NextStart { get; set; }
+        public int NextWindow { get; set; }
+        public bool IsLoop { get; set; }
+        public Jab(string Name, int Total, int[] StateChange, int FAF, int NextStart=0, int NextWindow=0, bool IsLoop=false) : base(Name, Total, StateChange, FAF, ActionType.Jab)
+        {
+            this.NextStart = NextStart;
+            this.NextWindow = NextWindow;
+            this.IsLoop = IsLoop;
+        }
+    }
+
     public class Smash : Action
     {
         public int ChargeFrame { get; set; }
@@ -43,9 +56,10 @@ namespace FrameByFrame.Models
 
     public class Grab : Action
     {
-        public Grab(string Name, int Total, int[] StateChange, int FAF) : base(Name, Total, StateChange, FAF, ActionType.Grab)
+        public bool IsDash { get; set; }
+        public Grab(string Name, int Total, int[] StateChange, int FAF, bool IsDash=false) : base(Name, Total, StateChange, FAF, ActionType.Grab)
         {
-
+            this.IsDash = IsDash;
         }
     }
 

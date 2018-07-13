@@ -43,6 +43,7 @@ namespace FrameByFrame.Models
         Special,
         Grab,
         Throw,
-        Evasive
+        Evasive,
+        Jab
     }
 }

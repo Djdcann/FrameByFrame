@@ -24,6 +24,7 @@ namespace FrameByFrame.Models
         public Normal TiltU { get; set; }
         public Normal TiltF { get; set; }
         public Normal TiltD { get; set; }
+        public Normal DashA { get; set; }
         public Smash SmashU { get; set; }
         public Smash SmashF { get; set; }
         public Smash SmashD { get; set; }
@@ -33,30 +34,28 @@ namespace FrameByFrame.Models
         public Aerial AerialB { get; set; }
         public Aerial AerialN { get; set; }
 
-        public IEnumerable<Special> Specials { get; set; }
-
-        public IEnumerable<Normal> Normals
-        {
-            get { return new List<Normal>() { this.TiltU, this.TiltF, this.TiltD }; }
-        }
-        public IEnumerable<Smash> Smashes
-        {
-            get { return new List<Smash>() { this.SmashU, this.SmashF, this.SmashD }; }
-        }
-        public IEnumerable<Aerial> Aerials
-        {
-            get { return new List<Aerial>() { this.AerialU, this.AerialF, this.AerialD, this.AerialB, this.AerialN }; }
-        }
+        public List<Special> Specials { get; set; }
+        public List<Jab> Jabs { get; set; }
 
         public IEnumerable<Action> getAttacks()
         {
             List<Action> a = new List<Action>();
-            a.AddRange(Normals);
-            a.AddRange(Smashes);
-            a.AddRange(Aerials);
-            a.AddRange(Specials);
+            a.Add(TiltU);
+            a.Add(TiltF);
+            a.Add(TiltD);
+            a.Add(DashA);
+            a.Add(SmashU);
+            a.Add(SmashF);
+            a.Add(SmashD);
+            a.Add(AerialU);
+            a.Add(AerialF);
+            a.Add(AerialD);
+            a.Add(AerialB);
+            a.Add(AerialN);
             a.Add(Grab);
-            a.Add(GrabD);
+            a.Add(Jabs.ElementAt(0));
+            a.AddRange(Specials);
+
             return a;
         }
 
@@ -68,7 +67,8 @@ namespace FrameByFrame.Models
             this.Name = Name;
             this.ImageFile = ImageFile;
             this.Attributes = new CharacterProperties();
-            this.Actions = new List<Action>();
+            this.Jabs = new List<Jab>();
+            this.Specials = new List<Special>();
         }
 
         public Character(){}
@@ -81,7 +81,6 @@ namespace FrameByFrame.Models
             this.Name = c.Name;
             this.ImageFile = c.ImageFile;
             this.Attributes = c.Attributes;
-            this.Actions = c.Actions;
         }
 
         private Character fromJson(string json)
