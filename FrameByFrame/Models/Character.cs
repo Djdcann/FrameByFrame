@@ -9,6 +9,7 @@ namespace FrameByFrame.Models
     public class Character
     {
         private string imagePath = "/images/portraits/";
+        private string jsonPath = "/chardata/";
 
         public int ID { get; set; }
         public string Name { get; set; }
@@ -59,8 +60,6 @@ namespace FrameByFrame.Models
             return a;
         }
 
-        public List<Action> Actions { get; set; }
-
         public Character(int ID, string Name, string ImageFile)
         {
             this.ID = ID;
@@ -73,20 +72,18 @@ namespace FrameByFrame.Models
 
         public Character(){}
 
-        public Character(string name)
+        public Character getFromName(string name)
         {
-            Character c = this.fromJson(System.IO.File.ReadAllText(@"C:\Users\Derek\Desktop\SP\" + name+".json"));
+            string json = System.IO.File.ReadAllText(jsonPath + name + ".json");
+            Character c = fromJson(json);
+            c.ImageFile = name.ToLower() + ".png";
 
-            this.ID = c.ID;
-            this.Name = c.Name;
-            this.ImageFile = c.ImageFile;
-            this.Attributes = c.Attributes;
+            return c;
         }
 
         private Character fromJson(string json)
         {
-            Character c = JsonConvert.DeserializeObject<Character>(json);
-            return c;
+            return JsonConvert.DeserializeObject<Character>(json);
         }
 
         public string getJson()
