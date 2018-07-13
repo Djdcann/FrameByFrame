@@ -74,9 +74,10 @@ namespace FrameByFrame.Models
 
         public Character getFromName(string name)
         {
-            string json = System.IO.File.ReadAllText(jsonPath + name + ".json");
+            string fn = name.ToLower().Replace(" ", "_");
+            string json = System.IO.File.ReadAllText(jsonPath + fn + ".json");
             Character c = fromJson(json);
-            c.ImageFile = name.ToLower() + ".png";
+            c.ImageFile = fn + ".png";
 
             return c;
         }
