@@ -26,10 +26,9 @@
     <tr><th>Taunt Frames</th><td>@Model.Attributes.Taunt</td></tr>
 </table>
 @{ 
-    foreach(Smash a in Model.Smashes) // get all normal attacks
+    foreach(Special a in Model.Specials) // get all normal attacks
     {
         <div>@a.Name</div>
-        <div>@a.ChargeFrame</div>
 
     }
 }
