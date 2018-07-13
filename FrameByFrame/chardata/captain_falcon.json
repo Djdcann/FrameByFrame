@@ -1,14 +1,14 @@
 {
-   "ID":9,
-   "Name":"Falco",
+   "ID":7,
+   "Name":"Captain Falcon",
    "Attributes":{
-      "Jumpsquat":5,
-      "Dash":11,
+      "Jumpsquat":4,
+      "Dash":15,
       "Landlag":4,
-      "SHAirtime":25,
-      "FHAirtime":51,
+      "SHAirtime":31,
+      "FHAirtime":49,
       "AirJumps":1,
-      "Taunt":114
+      "Taunt":60
    },
    "Airdodge":{
       "Type":6,
@@ -23,12 +23,12 @@
    "Spotdodge":{
       "Type":6,
       "Name":"Spotdodge",
-      "Total":22,
+      "Total":32,
       "StateChange":[
-         2,
-         16
+         3,
+         21
       ],
-      "FAF":23
+      "FAF":33
    },
    "RollF":{
       "Type":6,
@@ -67,183 +67,170 @@
       "Name":"Dash Grab",
       "Total":40,
       "StateChange":[
-         12,
-         14
+         11,
+         13
       ],
       "FAF":41
    },
    "TiltU":{
       "Type":0,
       "Name":"U-tilt",
-      "Total":23,
+      "Total":39,
       "StateChange":[
-         5,
-         12
+         17,
+         22
       ],
-      "FAF":23
+      "FAF":38
    },
    "TiltF":{
       "Type":0,
       "Name":"F-tilt",
-      "Total":26,
+      "Total":29,
       "StateChange":[
-         5,
-         10
+         9,
+         12
       ],
-      "FAF":27
+      "FAF":30
    },
    "TiltD":{
       "Type":0,
       "Name":"D-tilt",
-      "Total":29,
+      "Total":35,
       "StateChange":[
-         7,
-         10
+         10,
+         16
       ],
-      "FAF":28
+      "FAF":35
    },
    "DashA":{
       "Type":0,
       "Name":"Dash Attack",
       "Total":39,
       "StateChange":[
-         4,
-         18
+         7,
+         17
       ],
-      "FAF":36
+      "FAF":38
    },
    "SmashU":{
-      "ChargeFrame":2,
+      "ChargeFrame":8,
       "Type":1,
       "Name":"U-smash",
-      "Total":43,
+      "Total":54,
       "StateChange":[
-         7,
-         16
-      ],
-      "FAF":44
-   },
-   "SmashF":{
-      "ChargeFrame":7,
-      "Type":1,
-      "Name":"F-smash",
-      "Total":39,
-      "StateChange":[
-         12,
-         22
+        21,
+        23,
+        27,
+        29
       ],
       "FAF":40
    },
+   "SmashF":{
+      "ChargeFrame":10,
+      "Type":1,
+      "Name":"F-smash",
+      "Total":64,
+      "StateChange":[
+         18,
+         22
+      ],
+      "FAF":60
+   },
    "SmashD":{
-      "ChargeFrame":2,
+      "ChargeFrame":14,
       "Type":1,
       "Name":"D-smash",
       "Total":49,
       "StateChange":[
-         6,
-         11
+         19,23,29,33
       ],
-      "FAF":46
+      "FAF":45
    },
   "AerialU": {
-    "LandLag": 18,
+    "LandLag": 15,
     "CancelRange": [
-      7,
-      26
+      0,
+      22
     ],
     "Type": 2,
     "Name": "U-air",
-    "Total": 39,
+    "Total": 33,
     "StateChange": [
-      8,
-      10,
-      11,
-      15
+      6,14
     ],
-    "FAF": 36
+    "FAF": 30
   },
    "AerialF":{
-      "LandLag":22,
+      "LandLag":19,
       "CancelRange":[
-         5,
-         49
+         6,
+         35
       ],
       "Type":2,
-      "Name":"F-air",
-      "Total":59,
+      "Name":"F-air (Knee)",
+      "Total":39,
       "StateChange":[
-         6,
-         9,
-         16,
-         19,
-         24,
-         27,
-         33,
-         36,
-         43,
-         46
+         14,
+         31
       ],
-      "FAF":53
+      "FAF":36
    },
    "AerialD":{
-      "LandLag":18,
+      "LandLag":24,
       "CancelRange":[
-         4,
-         30
+         3,
+         36
       ],
       "Type":2,
       "Name":"D-air",
-      "Total":49,
+      "Total":44,
       "StateChange":[
-         5,
-         25
+         16,
+         21
       ],
-      "FAF":50
+      "FAF":38
    },
    "AerialB":{
-      "LandLag":20,
+      "LandLag":18,
       "CancelRange":[
-         3,
-         23
+         6,
+         21
       ],
       "Type":2,
       "Name":"B-air",
-      "Total":39,
+      "Total":35,
       "StateChange":[
-         4,
-         20
+         10,18
       ],
-      "FAF":38
+      "FAF":29
    },
    "AerialN":{
       "LandLag":15,
       "CancelRange":[
          3,
-         37
+         34
       ],
       "Type":2,
       "Name":"N-air",
-      "Total":49,
+      "Total":44,
       "StateChange":[
-         4,
-         32
+         7,13,20,30
       ],
-      "FAF":42
+      "FAF":45
    },
    "Specials":[
       {
          "Type":3,
-         "Name":"Ground Laser",
-         "Total":57,
+         "Name":"Falcon Punch",
+         "Total":99,
          "StateChange":[
-            23,
-            47
+            52,57
          ],
-         "FAF":58
+         "FAF":100
       },
       {
          "Type":3,
-         "Name":"Air Laser",
+         "Name":"Raptor Boost",
          "Total":42,
          "StateChange":[
             13,
@@ -253,27 +240,27 @@
       },
       {
          "Type":3,
-         "Name":"Phantasm",
-         "Total":59,
+         "Name":"Falcon Kick",
+         "Total":69,
          "StateChange":[
-            18,
-            22
+            14,
+            33
          ],
-         "FAF":60
+         "FAF":70
       },
       {
          "Type":3,
-         "Name":"Firebird",
-         "Total":84,
+         "Name":"Falcon Dive (UpB)",
+         "Total":64,
          "StateChange":[
-            43,
-            65
+            13,
+            33
          ],
-         "FAF":85
+         "FAF":65
       },
       {
          "Type":3,
-         "Name":"Shine",
+         "Name":"Falcon Kick Air",
          "Total":39,
          "StateChange":[
             1,
@@ -282,55 +269,57 @@
          "FAF":4
       }
    ],
-   "Jabs":[
-      {
-         "NextStart":6,
-         "NextWindow":31,
-         "IsLoop":false,
-         "Type":7,
-         "Name":"Jab1",
-         "Total":17,
-         "StateChange":[
-            2,
-            4
-         ],
-         "FAF":16
-      },
-      {
-         "NextStart":7,
-         "NextWindow":20,
-         "IsLoop":false,
-         "Type":7,
-         "Name":"Jab2",
-         "Total":20,
-         "StateChange":[
-            3,
-            5
-         ],
-         "FAF":19
-      },
-      {
-         "NextStart":0,
-         "NextWindow":0,
-         "IsLoop":true,
-         "Type":7,
-         "Name":"Jab3",
-         "Total":59,
-         "StateChange":[
-            3,
-            5,
-            10,
-            12,
-            17,
-            19,
-            24,
-            26,
-            31,
-            33,
-            39,
-            41
-         ],
-         "FAF":50
-      }
-   ]
+  "Jabs": [
+    {
+      "NextStart": 9,
+      "NextWindow": 25,
+      "IsLoop": false,
+      "Type": 7,
+      "Name": "Jab1",
+      "Total": 21,
+      "StateChange": [
+        3,
+        6
+      ],
+      "FAF": 22
+    },
+    {
+      "NextStart": 8,
+      "NextWindow": 25,
+      "IsLoop": false,
+      "Type": 7,
+      "Name": "Jab2",
+      "Total": 20,
+      "StateChange": [
+        5,
+        8
+      ],
+      "FAF": 21
+    },
+    {
+      "NextStart": 13,
+      "NextWindow": -1,
+      "IsLoop": false,
+      "Type": 7,
+      "Name": "Jab3",
+      "Total": 32,
+      "StateChange": [
+        6,
+        13
+      ],
+      "FAF": 23
+    },
+    {
+      "NextStart": 0,
+      "NextWindow": 0,
+      "IsLoop": true,
+      "Type": 7,
+      "Name": "Jab4",
+      "Total": 60,
+      "StateChange": [
+        5,7,13,15,21,23,29,31,36,38,45,47
+      ],
+      "FAF": 61
+    }
+  ]
 }
