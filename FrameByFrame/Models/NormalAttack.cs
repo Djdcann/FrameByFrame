@@ -44,6 +44,11 @@ namespace FrameByFrame.Models
             this.LandLag = LandLag;
             this.CancelRange = CancelRange;
         }
+
+        public override int getEndlag()
+        {
+            return this.LandLag /2;
+        }
     }
 
     public class Special : Action
