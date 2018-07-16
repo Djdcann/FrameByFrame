@@ -85,9 +85,36 @@ namespace FrameByFrame.Models
         public List<Normal> GetNormals()
         {
             return new List<Normal>() {
-                this.TiltU,
-                this.TiltF,
-                this.TiltD
+                TiltU,
+                TiltF,
+                TiltD
+            };
+        }
+        public List<Smash> GetSmashes()
+        {
+            return new List<Smash>() {
+                SmashU,
+                SmashF,
+                SmashD
+            };
+        }
+        public List<Aerial> GetAerials()
+        {
+            return new List<Aerial >() {
+                AerialU,
+                AerialF,
+                AerialD,
+                AerialB,
+                AerialN
+            };
+        }
+        public List<Evasive> GetEvasive()
+        {
+            return new List<Evasive>() {
+                Airdodge,
+                Spotdodge,
+                RollF,
+                RollB
             };
         }
 
