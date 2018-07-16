@@ -2,6 +2,7 @@
     padding-top: 50px;
     padding-bottom: 20px;
     background-color: #101010;
+    color: white;
 }
 
 /* Wrapping element */
@@ -45,12 +46,41 @@
     margin: 15px;
 }
 
-table {
+#char {
+    border-collapse: separate;
+    border-spacing: 10px;
+}
+
+#att {
+    border: 1px solid silver;
+    width: 100%;
+}
+
+#att caption {
+    display: table-caption;
+    text-align: center;
+    font-weight: bold;
+    background-color: silver;
+    color: black;
+    padding: 5px;
+}
+
+    #att th {
+        border: 1px solid silver;
+        padding: 5px;
+    }
+
+    #att td {
+        border: 1px solid silver;
+        padding: 5px;
+    }
+
+#select {
     border-collapse: separate;
     border-spacing: 5px;
 }
 
-td {
+#select td {
     border: 5px solid silver;
     border-radius: 15px;
     padding-bottom: 5px;
@@ -61,22 +91,26 @@ td {
     font-size: .75vw;
 }
 
-td:hover {
+#select a {
+    color: white;
+}
+
+#select td:hover {
     text-decoration: underline;
     cursor: pointer;
 }
 
-td:hover img {
+#select td:hover img {
     background: white;
 }
 
-    td img {
-        width: 100%;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-        background: linear-gradient(to bottom, midnightblue, dodgerblue);
-        margin-bottom: 5px;
-    }
+#select td img {
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background: linear-gradient(to bottom, midnightblue, dodgerblue);
+    margin-bottom: 5px;
+}
 
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {

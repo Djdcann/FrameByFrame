@@ -4,36 +4,44 @@
     ViewData["Title"] = Model.Name + " Frame Data";
 }
 
-<h2>Character</h2>
+<table id="char">
+        <tr>
+            <td>
+                <div>
+                    <h3 style="text-align: center; background-color: red; color: white; margin-bottom: 0; padding: 5px;
+                        text-transform: uppercase; font-weight: bold; border-top-left-radius: 10px;
+                        border-top-right-radius: 10px">@Model.Name</h3>
+                    <img src="@Model.getImagePath()" style="background-color: white; width: 100%;
+                        border-bottom-left-radius: 10px; border-bottom-right-radius: 10px"/>
+                </div>
+                <br />
+                <table id="att">
+                    <caption>Character Attributes</caption>
+                    <tr><th>Jumpsquat</th><td>@Model.Attributes.Jumpsquat</td></tr>
+                    <tr><th>Dash</th><td>@Model.Attributes.Dash</td></tr>
+                    <tr><th>Landlag</th><td>@Model.Attributes.Landlag</td></tr>
+                    <tr><th>SHAirtime</th><td>@Model.Attributes.SHAirtime</td></tr>
+                    <tr><th>FHAirtime</th><td>@Model.Attributes.FHAirtime</td></tr>
+                    <tr><th>AirJumps</th><td>@Model.Attributes.AirJumps</td></tr>
+                    <tr><th>Taunt Frames</th><td>@Model.Attributes.Taunt</td></tr>
+                </table>
+            </td>
+            <td>
+                @{
+                    foreach (Special a in Model.Specials) // get all normal attacks
+                    {
+                        <div>@a.Name</div>
 
-<div>
-    <h4>Character</h4>
-    <hr />
-    <dl class="dl-horizontal">
-    </dl>
-</div>
-<div>
-    @Model.Name
-    <img src="@Model.getImagePath()" />
-</div>
-<table>
-    <tr><th>Jumpsquat</th><td>@Model.Attributes.Jumpsquat</td></tr>
-    <tr><th>Dash</th><td>@Model.Attributes.Dash</td></tr>
-    <tr><th>Landlag</th><td>@Model.Attributes.Landlag</td></tr>
-    <tr><th>SHAirtime</th><td>@Model.Attributes.SHAirtime</td></tr>
-    <tr><th>FHAirtime</th><td>@Model.Attributes.FHAirtime</td></tr>
-    <tr><th>AirJumps</th><td>@Model.Attributes.AirJumps</td></tr>
-    <tr><th>Taunt Frames</th><td>@Model.Attributes.Taunt</td></tr>
+                    }
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div>
+                    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+                    <a asp-action="Index">Back to List</a>
+                </div>
+            </td>
+        </tr>
 </table>
-@{ 
-    foreach(Special a in Model.Specials) // get all normal attacks
-    {
-        <div>@a.Name</div>
-
-    }
-}
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
-</div>
-<br/>
