@@ -26,27 +26,64 @@
                     <tr><th>Taunt Frames</th><td>@Model.Attributes.Taunt</td></tr>
                 </table>
             </td>
-            <td style="padding-left: 50px;">
-                @{
-                    foreach (Special a in Model.Specials) // get all normal attacks
-                    {
-                <table id="attacks">
-                    <col width="150px" />
-                    <col width="auto" />
-                    <col width="100px" />
-                    <tr>
-                        <td>@a.Name
-                            <div style="background-color: red; color: white; border-radius: 100%; width: 20px; height: 20px;
+            <td style="padding-left: 50px; vertical-align: top; padding-top: 20px">
+                <div class="tab">
+                    <input id="tab-one" type="checkbox" name="tabs" checked>
+                    <label for="tab-one">Normal Attacks</label>
+                    <div class="tab-content">
+
+                        @{
+                            foreach (Special a in Model.Specials) // get all normal attacks
+                            {
+                                <table id="attacks">
+                                    <col width="150px" />
+                                    <col width="auto" />
+                                    <col width="100px" />
+                                    <tr>
+                                        <td>
+                                            @a.Name
+                                            <div style="background-color: red; color: white; border-radius: 100%; width: 20px; height: 20px;
                                 text-align: center; vertical-align: middle; font-weight: bold">B</div>
-                        </td>
-                        <td style="background-color: lawngreen">----------------------------------------</td>
-                        <td style="text-align: center">
-                            <a href="#">View Gif</a>
-                        </td>
-                    </tr>
-                </table>
-                    }
-                }
+                                        </td>
+                                        <td style="background-color: lawngreen">----------------------------------------</td>
+                                        <td style="text-align: center">
+                                            <a href="#">View Gif</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            }
+                        }
+                    </div>
+                </div>
+
+                <div class="tab">
+                    <input id="tab-two" type="checkbox" name="tabs">
+                    <label for="tab-two">Normal Attacks</label>
+                    <div class="tab-content">
+
+                        @{
+                            foreach (Special a in Model.Specials) // get all normal attacks
+                            {
+                                <table id="attacks">
+                                    <col width="150px" />
+                                    <col width="auto" />
+                                    <col width="100px" />
+                                    <tr>
+                                        <td>
+                                            @a.Name
+                                            <div style="background-color: red; color: white; border-radius: 100%; width: 20px; height: 20px;
+                                text-align: center; vertical-align: middle; font-weight: bold">B</div>
+                                        </td>
+                                        <td style="background-color: lawngreen">----------------------------------------</td>
+                                        <td style="text-align: center">
+                                            <a href="#">View Gif</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            }
+                        }
+                    </div>
+                </div>
             </td>
         </tr>
         <tr>
