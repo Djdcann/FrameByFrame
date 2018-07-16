@@ -51,12 +51,12 @@
     border-spacing: 10px;
 }
 
-#att {
+#attr {
     border: 1px solid silver;
     width: 100%;
 }
 
-#att caption {
+#attr caption {
     display: table-caption;
     text-align: center;
     font-weight: bold;
@@ -65,15 +65,25 @@
     padding: 5px;
 }
 
-    #att th {
+    #attr th {
         border: 1px solid silver;
         padding: 5px;
     }
 
-    #att td {
+    #attr td {
         border: 1px solid silver;
         padding: 5px;
     }
+
+#attacks {
+    border: 1px solid silver;
+    width: 100%;
+    table-layout: fixed;
+}
+
+#attacks td {
+    padding: 10px;
+}
 
 #select {
     border-collapse: separate;
