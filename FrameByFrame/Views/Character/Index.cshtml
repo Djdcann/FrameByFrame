@@ -33,7 +33,7 @@
                     <div class="tab-content">
 
                         @{
-                            foreach (Special a in Model.Specials) // get all normal attacks
+                            foreach (Normal a in Model.GetNormals()) // get all normal attacks
                             {
                                 <table id="attacks">
                                     <col width="150px" />
@@ -58,7 +58,7 @@
 
                 <div class="tab">
                     <input id="tab-two" type="checkbox" name="tabs">
-                    <label for="tab-two">Normal Attacks</label>
+                    <label for="tab-two">Special Attacks</label>
                     <div class="tab-content">
 
                         @{

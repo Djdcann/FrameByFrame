@@ -82,6 +82,15 @@ namespace FrameByFrame.Models
             return c;
         }
 
+        public List<Normal> GetNormals()
+        {
+            return new List<Normal>() {
+                this.TiltU,
+                this.TiltF,
+                this.TiltD
+            };
+        }
+
         private Character fromJson(string json)
         {
             return JsonConvert.DeserializeObject<Character>(json);
