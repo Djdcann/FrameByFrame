@@ -52,6 +52,21 @@ namespace FrameByFrame.Models
             return a;
         }
 
+        public IEnumerable<Action> getActions()
+        {
+            List<Action> a = new List<Action>();
+            a.AddRange(GetNormals());
+            a.Add(DashA);
+            a.AddRange(GetSmashes());
+            a.AddRange(GetAerials());
+            a.Add(Grab);
+            a.Add(GrabD);
+            a.AddRange(Jabs);
+            a.AddRange(Specials);
+
+            return a;
+        }
+
         public Character(Roster ID, string Name)
         {
             this.ID = (int)ID;
@@ -67,6 +82,8 @@ namespace FrameByFrame.Models
             string fn = ID.ToString();
             return getFromName(fn);
         }
+
+        public Character() { }
 
         public static Character getFromName(string name)
         {
@@ -129,6 +146,18 @@ namespace FrameByFrame.Models
         public string getImagePath()
         {
             return imagePath + ImageFile;
+        }
+
+        public List<Tuple<Action, int>> getFrameWindows(Action a)
+        {
+            List<Tuple<Action, int>> fw = new List<Tuple<Action, int>>();
+
+            foreach(Action s in getAttacks())
+            {
+                int window = a.getEndlag() - s.getStartup(Attributes.Jumpsquat);
+                fw.Add(Tuple.Create(s, window));
+            }
+            return fw;
         }
     }
 }

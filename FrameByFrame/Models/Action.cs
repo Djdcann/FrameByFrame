@@ -14,6 +14,8 @@ namespace FrameByFrame.Models
         public int FAF { get; set; }
 
         private int characterID;
+        protected static readonly int dropShield = 15;
+        protected static readonly int dropShieldPerfect = 1;
 
         public Action(string Name, int Total, int[] StateChange, int FAF, ActionType Type)
         {
@@ -24,12 +26,7 @@ namespace FrameByFrame.Models
             this.FAF = FAF;
         }
 
-        public int getFrameWindow(Action a)
-        {
-            return this.getEndlag() - a.getStartup();
-        }
-
-        public virtual int getStartup()
+        public virtual int getStartup(int Jumpsquat, bool perfectShield=false)
         {
             return StateChange[0];
         }

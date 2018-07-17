@@ -54,22 +54,12 @@ namespace FrameByFrame.Controllers
             return roster[id];
         }
 
-        // POST api/<controller>
-        [HttpPost]
-        public void Post([FromBody]string value)
+        // GET api/<controller>/5
+        [HttpGet("{id}")]
+        public Character Get(string id)
         {
-        }
-
-        // PUT api/<controller>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            Roster ID = (Roster)Enum.Parse(typeof(Roster), id);
+            return roster[(int)ID];
         }
     }
 }
