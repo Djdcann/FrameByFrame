@@ -74,7 +74,7 @@
                                             <div style="background-color: red; color: white; border-radius: 100%; width: 20px; height: 20px;
                                 text-align: center; vertical-align: middle; font-weight: bold">B</div>
                         </td>
-                        <td style="background-color: lawngreen">----------------------------------------</td>
+                        <td style="background-color: lawngreen">@Html.Raw(a.ganttChart())</td>
                         <td style="text-align: center">
                             <a href="#">View Gif</a>
                         </td>
@@ -95,4 +95,4 @@
         </tr>
 </table>
 
-@Html.Raw(Model.AerialF.ganttChart())
+@Html.Raw(Model.Airdodge.ganttChart())

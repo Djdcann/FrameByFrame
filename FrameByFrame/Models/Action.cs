@@ -50,8 +50,11 @@ namespace FrameByFrame.Models
                 int a = i < StateChange.Length ? StateChange[i] : FAF;
                 int l = a - s;
                 string c = i % 2 == 0 ? lagClass : activeClass;
-                sb.Append($"<td class='{c}' width='{(float)l*100/FAF}%'>{l}</td>");
-                sb2.Append($"<td>{s}</td>");
+                if (l != 0)
+                {
+                    sb.Append($"<td class='{c}' width='{(float)l * 100 / FAF}%'>{l}</td>");
+                    sb2.Append($"<td>{s}</td>");
+                }
                 s = a;
             }
             sb2.Append($"<td>{FAF}</td>");

@@ -126,7 +126,7 @@ namespace FrameByFrame.Models
     {
         public Evasive(string Name, int Total, int[] StateChange, int FAF) : base(Name, Total, StateChange, FAF, ActionType.Evasive)
         {
-
+            activeClass = "invincible";
         }
     }
 }
