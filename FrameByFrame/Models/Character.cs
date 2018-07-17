@@ -9,7 +9,7 @@ namespace FrameByFrame.Models
     public class Character
     {
         private string imagePath = "/images/portraits/";
-        private string jsonPath = "chardata/";
+        private static string jsonPath = "chardata/";
 
         public int ID { get; set; }
         public string Name { get; set; }
@@ -41,18 +41,10 @@ namespace FrameByFrame.Models
         public IEnumerable<Action> getAttacks()
         {
             List<Action> a = new List<Action>();
-            a.Add(TiltU);
-            a.Add(TiltF);
-            a.Add(TiltD);
+            a.AddRange(GetNormals());
             a.Add(DashA);
-            a.Add(SmashU);
-            a.Add(SmashF);
-            a.Add(SmashD);
-            a.Add(AerialU);
-            a.Add(AerialF);
-            a.Add(AerialD);
-            a.Add(AerialB);
-            a.Add(AerialN);
+            a.AddRange(GetSmashes());
+            a.AddRange(GetAerials());
             a.Add(Grab);
             a.Add(Jabs.ElementAt(0));
             a.AddRange(Specials);
@@ -60,19 +52,23 @@ namespace FrameByFrame.Models
             return a;
         }
 
-        public Character(int ID, string Name, string ImageFile)
+        public Character(Roster ID, string Name)
         {
-            this.ID = ID;
+            this.ID = (int)ID;
             this.Name = Name;
-            this.ImageFile = ImageFile;
+            this.ImageFile = ID.ToString() + ".png";
             this.Attributes = new CharacterProperties();
             this.Jabs = new List<Jab>();
             this.Specials = new List<Special>();
         }
 
-        public Character(){}
+        public static Character fromID(Roster ID)
+        {
+            string fn = ID.ToString();
+            return getFromName(fn);
+        }
 
-        public Character getFromName(string name)
+        public static Character getFromName(string name)
         {
             string fn = name.ToLower().Replace(" ", "_");
             string json = System.IO.File.ReadAllText(jsonPath + fn + ".json");
@@ -118,7 +114,7 @@ namespace FrameByFrame.Models
             };
         }
 
-        private Character fromJson(string json)
+        private static Character fromJson(string json)
         {
             return JsonConvert.DeserializeObject<Character>(json);
         }

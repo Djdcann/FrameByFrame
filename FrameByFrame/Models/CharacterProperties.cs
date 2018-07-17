@@ -26,4 +26,34 @@ namespace FrameByFrame.Models
             Taunt = 0;
         }
     }
+
+    public enum Roster
+    {
+        Dr_Mario,
+        Mario,
+        Luigi,
+        Bowser,
+        Peach,
+        Yoshi,
+        Donkey_Kong,
+        Captain_Falcon,
+        Ganondorf,
+        Falco,
+        Fox,
+        Ness,
+        Ice_Climbers,
+        Kirby,
+        Samus,
+        Zelda,
+        Sheik,
+        Link,
+        Young_Link,
+        Pichu,
+        Pikachu,
+        JigglyPuff,
+        Mewtwo,
+        Mr_Game_and_Watch,
+        Marth,
+        Roy
+    }
 }
