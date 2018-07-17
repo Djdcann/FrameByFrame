@@ -198,3 +198,21 @@ input[type=radio]:checked + label::after {
         display: none;
     }
 }
+
+.gantt{
+    width: 100%;
+}
+
+.lag, .hit{
+    text-align:center;
+    color:black;
+    border:1px solid black;
+}
+
+.lag{
+    background-color:yellow;
+}
+
+.hit{
+    background-color:red;
+}
