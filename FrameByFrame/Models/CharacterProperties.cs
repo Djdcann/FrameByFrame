@@ -26,4 +26,34 @@ namespace FrameByFrame.Models
             Taunt = 0;
         }
     }
+
+    public enum Roster
+    {
+        DR_MARIO,
+        MARIO,
+        LUIGI,
+        BOWSER,
+        PEACH,
+        YOSHI,
+        DONKEY_KONG,
+        CAPTAIN_FALCON,
+        GANONDORF,
+        FALCO,
+        FOX,
+        NESS,
+        ICE_CLIMBERS,
+        KIRBY,
+        SAMUS,
+        ZELDA,
+        SHEIK,
+        LINK,
+        YOUNG_LINK,
+        PICHU,
+        PIKACHU,
+        JIGGLYPUFF,
+        MEWTWO,
+        MR_GAME_AND_WATCH,
+        MARTH,
+        ROY
+    }
 }

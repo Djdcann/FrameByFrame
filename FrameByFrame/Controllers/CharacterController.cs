@@ -47,9 +47,9 @@ namespace FrameByFrame.Controllers
             //c.RollB = new Evasive("B-Roll", 31, new int[2] { 4, 20 }, 32);
 
             //c.Attributes = new CharacterProperties { Jumpsquat = 4, Dash = 11, SHAirtime = 25, FHAirtime = 51, Landlag = 4, AirJumps = 1, Taunt = 114 };
-            Character c = new Character();
-
-            return View(c.getFromName(id));
+            Roster ID = (Roster)Enum.Parse(typeof(Roster), id.ToUpper());
+            
+            return View(FrameDataController.roster[(int)ID]);
         }
 
         public IActionResult Character(string id)

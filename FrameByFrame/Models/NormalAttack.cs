@@ -11,6 +11,19 @@ namespace FrameByFrame.Models
         {
 
         }
+
+        public override int getStartup(int Jumpsquat, bool perfectShield = false)
+        {
+            int a = Name == "Dash Attack" ? 4 : 0; //Additional startup frames for dash attack
+            if (perfectShield)
+            {
+                return a + dropShieldPerfect + StateChange[0];
+            }
+            else
+            {
+                return a + dropShield + StateChange[0];
+            }
+        }
     }
 
     public class Jab : Action
@@ -24,6 +37,18 @@ namespace FrameByFrame.Models
             this.NextWindow = NextWindow;
             this.IsLoop = IsLoop;
         }
+
+        public override int getStartup(int Jumpsquat, bool perfectShield = false)
+        {
+            if (perfectShield)
+            {
+                return dropShieldPerfect + StateChange[0];
+            }
+            else
+            {
+                return dropShield + StateChange[0];
+            }
+        }
     }
 
     public class Smash : Action
@@ -32,6 +57,18 @@ namespace FrameByFrame.Models
         public Smash(string Name, int Total, int[] StateChange, int FAF, int ChargeFrame) : base(Name, Total, StateChange, FAF, ActionType.Smash)
         {
             this.ChargeFrame = ChargeFrame;
+        }
+
+        public override int getStartup(int Jumpsquat, bool perfectShield = false)
+        {
+            if (perfectShield)
+            {
+                return dropShieldPerfect + StateChange[0];
+            }
+            else
+            {
+                return dropShield + StateChange[0];
+            }
         }
     }
 
@@ -45,6 +82,11 @@ namespace FrameByFrame.Models
             this.CancelRange = CancelRange;
         }
 
+        public override int getStartup(int Jumpsquat, bool perfectShield = false)
+        {
+            return Jumpsquat + StateChange[0];
+        }
+
         public override int getEndlag()
         {
             return this.LandLag /2;
@@ -56,6 +98,18 @@ namespace FrameByFrame.Models
         public Special(string Name, int Total, int[] StateChange, int FAF) : base(Name, Total, StateChange, FAF, ActionType.Special)
         {
 
+        }
+
+        public override int getStartup(int Jumpsquat, bool perfectShield = false)
+        {
+            if (perfectShield)
+            {
+                return dropShield + StateChange[0];
+            }
+            else
+            {
+                return Jumpsquat + StateChange[0];
+            }
         }
     }
 
@@ -72,7 +126,7 @@ namespace FrameByFrame.Models
     {
         public Evasive(string Name, int Total, int[] StateChange, int FAF) : base(Name, Total, StateChange, FAF, ActionType.Evasive)
         {
-
+            activeClass = "invincible";
         }
     }
 }
