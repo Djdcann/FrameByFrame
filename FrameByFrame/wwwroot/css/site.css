@@ -75,15 +75,15 @@
         padding: 5px;
     }
 
-#attacks {
+.attacks {
     border: 1px solid silver;
     width: 100%;
     table-layout: fixed;
 }
 
-#attacks td {
+/*#attacks td {
     padding: 10px;
-}
+}*/
 
 #select {
     border-collapse: separate;
@@ -201,10 +201,10 @@ input[type=radio]:checked + label::after {
 }
 
 .gantt{
-    width: 100%;
+    width:100%;
 }
 
-.lag, .hit, .invincible {
+.lag, .hit, .invincible, .grab {
     text-align: center;
     color: black;
     border: 1px solid black;
@@ -220,4 +220,8 @@ input[type=radio]:checked + label::after {
 
 .invincible{
     background-color:blue;
+}
+
+.grab {
+    background-color: mediumpurple;
 }

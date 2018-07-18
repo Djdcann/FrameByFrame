@@ -119,6 +119,7 @@ namespace FrameByFrame.Models
         public Grab(string Name, int Total, int[] StateChange, int FAF, bool IsDash=false) : base(Name, Total, StateChange, FAF, ActionType.Grab)
         {
             this.IsDash = IsDash;
+            activeClass = "grab";
         }
     }
 

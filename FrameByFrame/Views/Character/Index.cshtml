@@ -3,7 +3,9 @@
 @{
     ViewData["Title"] = Model.Name + " Frame Data";
 }
-
+<div style="margin-top:2vh">
+    <a asp-action="Index" asp-controller="Home">Back to List</a>
+</div>
 <table id="char">
     <tr>
         <td style="vertical-align: top">
@@ -26,71 +28,108 @@
                     <tr><th>Taunt Frames</th><td>@Model.Attributes.Taunt</td></tr>
                 </table>
             </td>
-            <td style="padding-left: 50px; vertical-align: top; padding-top: 20px">
-                <div class="tab">
-                    <input id="tab-one" type="checkbox" name="tabs" checked>
-                    <label for="tab-one">Normal Attacks</label>
-                    <div class="tab-content" >
-                        <table id="attacks">
-                            <col width="110px" style="border: 1px solid silver;" />
-                            <col width="50px" style="border: 1px solid silver;" />
-                            <col width="auto" style="border: 1px solid silver;" />
-                            <col width="50px" style="border: 1px solid silver;" />
-                            <tr style="background-color: silver; color: black; font-weight: bold">
-                                <td style="text-align: center">Name</td>
-                                <td style="text-align: center">Total</td>
-                                <td>Gantt Chart</td>
-                                <td style="text-align: center">FAF</td>
-                            </tr>
-                           
-                                @{
-                                    foreach (Normal a in Model.GetNormals()) // get all normal attacks
-                                    {
-                                    <tr style="border: 1px solid silver;">
-                                        <td style="text-align: center">
-                                            @a.Name
-                                            <!--<div style="background-color: red; color: white; border-radius: 100%; width: 20px; height: 20px;
-                    text-align: center; vertical-align: middle; font-weight: bold">B</div>-->
-                                        </td>
-                                        <td style="text-align: center">@a.Total</td>
-                                        <td>@Html.Raw(a.ganttChart())</td>
-                                        <td style="text-align: center">@a.FAF</td>
-                                    </tr>
-                                    }
-                                }
-                            </table>
-                        </div>
+
+        <td style="padding-left: 50px; vertical-align: top; padding-top: 20px">
+            <!-- NORMALS -->
+            <div class="tab">
+                <input id="tab-1" type="checkbox" name="tabs" checked>
+                <label for="tab-1">Normal Attacks</label>
+                <div class="tab-content">
+                    <table class="attacks">
+                        <col width="110px" style="border: 1px solid silver;" />
+                        <col width="auto" style="border: 1px solid silver;" />
+                        <col width="50px" style="border: 1px solid silver;" />
+                        <col width="50px" style="border: 1px solid silver;" />
+                        <tr style="background-color: whitesmoke; color: black; font-weight: bold">
+                            <td style="text-align: center">Name</td>
+                            <td>Gantt Chart</td>
+                            <td style="text-align: center">FAF</td>
+                            <td style="text-align: center">Total</td>
+                        </tr>
+
+                        @{
+                            foreach (Normal a in Model.GetNormals()) // get all normal attacks
+                            {
+                                <tr style="border: 1px solid silver;">
+                                    <td style="text-align: center">@a.Name</td>
+                                    <td style="padding:5px;">@Html.Raw(a.ganttChart())</td>
+                                    <td style="text-align: center">@a.FAF</td>
+                                    <td style="text-align: center">@a.Total</td>
+                                </tr>
+                            }
+                        }
+                    </table>
                 </div>
+            </div>
+            <br />
 
-                <div class="tab">
-                    <input id="tab-two" type="checkbox" name="tabs">
-                    <label for="tab-two">Special Attacks</label>
-                    <div class="tab-content">
+            <!-- Aerials -->
+            <div class="tab">
+                <input id="tab-2" type="checkbox" name="tabs" checked>
+                <label for="tab-2">Aerial Attacks</label>
+                <div class="tab-content">
+                    <table class="attacks">
+                        <col width="110px" style="border: 1px solid silver;" />
+                        <col width="auto" style="border: 1px solid silver;" />
+                        <col width="50px" style="border: 1px solid silver;" />
+                        <col width="50px" style="border: 1px solid silver;" />
+                        <col width="70px" style="border: 1px solid silver;" />
+                        <col width="80px" style="border: 1px solid silver;" />
+                        <tr style="background-color: whitesmoke; color: black; font-weight: bold">
+                            <td style="text-align: center">Name</td>
+                            <td>Gantt Chart</td>
+                            <td style="text-align: center">FAF</td>
+                            <td style="text-align: center">Total</td>
+                            <td style="text-align: center">Landlag</td>
+                            <td style="text-align: center">A-Cancel</td>
+                        </tr>
 
+                        @{
+                            foreach (Aerial a in Model.GetAerials()) // get all normal attacks
+                            {
+                                <tr style="border: 1px solid silver;">
+                                    <td style="text-align: center">@a.Name</td>
+                                    <td style="padding:5px;">@Html.Raw(a.ganttChart())</td>
+                                    <td style="text-align: center">@a.FAF</td>
+                                    <td style="text-align: center">@a.Total</td>
+                                    <td style="text-align: center">@a.LandLag</td>
+                                    <td style="text-align: center">&lt;@a.CancelRange[0] @a.CancelRange[1]&gt;</td>
+                                </tr>
+                            }
+                        }
+                    </table>
+                </div>
+            </div>
+            <br />
+
+            <div class="tab">
+                <input id="tab-two" type="checkbox" name="tabs">
+                <label for="tab-two">Special Attacks</label>
+                <div class="tab-content">
+                    <table class="attacks">
+                        <col width="150px" style="border: 1px solid silver;" />
+                        <col width="auto" style="border: 1px solid silver;" />
+                        <col width="100px" style="border: 1px solid silver;" />
                         @{
                             foreach (Special a in Model.Specials) // get all normal attacks
                             {
-                                <table id="attacks">
-                                    <col width="150px" />
-                                    <col width="auto" />
-                                    <col width="100px" />
-                                    <tr>
-                                        <td>
-                                            @a.Name
-                                            <div style="background-color: red; color: white; border-radius: 100%; width: 20px; height: 20px;
+
+                                <tr style="border: 1px solid silver;">
+                                    <td>
+                                        @a.Name
+                                        <div style="background-color: red; color: white; border-radius: 100%; width: 20px; height: 20px;
                                 text-align: center; vertical-align: middle; font-weight: bold">B</div>
-                        </td>
-                        <td style="background-color: lawngreen">@Html.Raw(a.ganttChart())</td>
-                        <td style="text-align: center">
-                            <a href="#">View Gif</a>
-                        </td>
-                    </tr>
-                </table>
+                                    </td>
+                                    <td style="padding:5px;">@Html.Raw(a.ganttChart())</td>
+                                    <td style="text-align:center">@a.FAF</td>
+                                </tr>
+
                             }
-                }
-                        </div>
-                    </div>
-            </td>
+                        }
+                    </table>
+                </div>
+            </div>
+        </td>
         </tr>
         <tr>
             <td>

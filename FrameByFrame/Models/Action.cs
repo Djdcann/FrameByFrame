@@ -57,7 +57,6 @@ namespace FrameByFrame.Models
                 }
                 s = a;
             }
-            sb2.Append($"<td>{FAF}</td>");
             sb.Append(sb2);
             sb.Append("</tr></table>");
             return sb.ToString();
