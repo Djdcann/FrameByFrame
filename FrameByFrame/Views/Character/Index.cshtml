@@ -27,6 +27,18 @@
                     <tr><th>AirJumps</th><td>@Model.Attributes.AirJumps</td></tr>
                     <tr><th>Taunt Frames</th><td>@Model.Attributes.Taunt</td></tr>
                 </table>
+                See Matchup for
+                <select style="color:black" onchange="location += this.value;" on>
+                    <option selected>--</option>
+                    @{
+                        foreach (string s in Enum.GetNames(typeof(Roster)).OrderBy(x => x))
+                        {
+                            string a = s[0] + s.Substring(1).ToLower();
+                            <option value="/@a">@a</option>
+                        }
+
+                     }
+                </select>
             </td>
 
         <td style="padding-left: 50px; vertical-align: top; padding-top: 20px">

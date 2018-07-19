@@ -52,10 +52,11 @@ namespace FrameByFrame.Controllers
             return View(FrameDataController.roster[(int)ID]);
         }
 
-        public IActionResult Character(string id)
+        public IActionResult Matchup(string id, string id2)
         {
-            
-            return View();
+            Roster ID = (Roster)Enum.Parse(typeof(Roster), id.ToUpper());
+            Roster ID2 = (Roster)Enum.Parse(typeof(Roster), id2.ToUpper());
+            return View(new Character[]{ FrameDataController.roster[(int)ID], FrameDataController.roster[(int)ID2] });
         }
     }
 }

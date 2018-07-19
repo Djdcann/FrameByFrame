@@ -49,6 +49,12 @@ namespace FrameByFrame
                 );
 
                 routes.MapRoute(
+                    name: "CharacterM",
+                    template: "Character/{id}/{id2}",
+                    defaults: new { controller = "Character", action = "Matchup", id = "Falco", id2 = "Fox" }
+                );
+
+                routes.MapRoute(
                     name: "default",
                     template: "{controller}/{action}/{id?}",
                     defaults: new { controller = "Home", action = "Index"});
