@@ -148,13 +148,13 @@ namespace FrameByFrame.Models
             return imagePath + ImageFile;
         }
 
-        public List<Tuple<Action, int>> getFrameWindows(Action a)
+        public List<Tuple<Action, int>> getFrameWindows(Action a, bool perfectShield=false)
         {
             List<Tuple<Action, int>> fw = new List<Tuple<Action, int>>();
 
             foreach(Action s in getAttacks())
             {
-                int window = a.getEndlag() - s.getStartup(Attributes.Jumpsquat);
+                int window = a.getEndlag() - s.getStartup(Attributes.Jumpsquat, perfectShield);
                 fw.Add(Tuple.Create(s, window));
             }
             return fw;

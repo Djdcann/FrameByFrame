@@ -104,7 +104,7 @@ namespace FrameByFrame.Models
         {
             if (perfectShield)
             {
-                return dropShield + StateChange[0];
+                return dropShieldPerfect + StateChange[0];
             }
             else
             {
