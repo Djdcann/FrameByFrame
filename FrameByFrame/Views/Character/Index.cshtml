@@ -27,7 +27,8 @@
                     <tr><th>AirJumps</th><td>@Model.Attributes.AirJumps</td></tr>
                     <tr><th>Taunt Frames</th><td>@Model.Attributes.Taunt</td></tr>
                 </table>
-                See Matchup for
+                <br />
+                <p>See Matchup for</p>
                 <select style="color:black" onchange="location += this.value;" on>
                     <option selected>--</option>
                     @{
@@ -42,105 +43,131 @@
             </td>
 
         <td style="padding-left: 50px; vertical-align: top; padding-top: 20px">
-            <!-- NORMALS -->
-            <div class="tab">
-                <input id="tab-1" type="checkbox" name="tabs" checked>
-                <label for="tab-1">Normal Attacks</label>
-                <div class="tab-content">
-                    <table class="attacks">
-                        <col width="110px" style="border: 1px solid silver;" />
-                        <col width="auto" style="border: 1px solid silver;" />
-                        <col width="50px" style="border: 1px solid silver;" />
-                        <col width="50px" style="border: 1px solid silver;" />
-                        <tr style="background-color: whitesmoke; color: black; font-weight: bold">
-                            <td style="text-align: center">Name</td>
-                            <td>Gantt Chart</td>
-                            <td style="text-align: center">FAF</td>
-                            <td style="text-align: center">Total</td>
-                        </tr>
 
-                        @{
-                            foreach (Normal a in Model.GetNormals()) // get all normal attacks
-                            {
-                                <tr style="border: 1px solid silver;">
-                                    <td style="text-align: center">@a.Name</td>
-                                    <td style="padding:5px;">@Html.Raw(a.ganttChart())</td>
-                                    <td style="text-align: center">@a.FAF</td>
-                                    <td style="text-align: center">@a.Total</td>
+            <!-- NORMALS -->
+            <div class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading" data-toggle="collapse" href="#collapse1">
+                        <h4 class="panel-title">Normal Attacks</h4>
+                    </div>
+                    <div id="collapse1" class="panel-collapse collapse in">
+                        <div class="panel-body" aria-expanded="true">
+                            <table class="attacks">
+                                <col width="110px" />
+                                <col width="auto" />
+                                <col width="50px" />
+                                <col width="50px" />
+
+                                <tr style="background-color: whitesmoke; color: black; font-weight: bold">
+                                    <td style="text-align: center">Name</td>
+                                    <td style="padding: 5px">Frame Data Visualization</td>
+                                    <td style="text-align: center">FAF</td>
+                                    <td style="text-align: center">Total</td>
                                 </tr>
-                            }
-                        }
-                    </table>
+
+                                @{
+                                    foreach (Normal a in Model.GetNormals()) // get all normal attacks
+                                    {
+                                        <tr style="border: 1px solid silver;">
+                                            <td style="text-align: center">@a.Name</td>
+                                            <td style="padding: 5px;">@Html.Raw(a.ganttChart())</td>
+                                            <td style="text-align: center">@a.FAF</td>
+                                            <td style="text-align: center">@a.Total</td>
+                                        </tr>
+                                    }
+                                }
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <br />
 
             <!-- Aerials -->
-            <div class="tab">
-                <input id="tab-2" type="checkbox" name="tabs" checked>
-                <label for="tab-2">Aerial Attacks</label>
-                <div class="tab-content">
-                    <table class="attacks">
-                        <col width="110px" style="border: 1px solid silver;" />
-                        <col width="auto" style="border: 1px solid silver;" />
-                        <col width="50px" style="border: 1px solid silver;" />
-                        <col width="50px" style="border: 1px solid silver;" />
-                        <col width="70px" style="border: 1px solid silver;" />
-                        <col width="80px" style="border: 1px solid silver;" />
-                        <tr style="background-color: whitesmoke; color: black; font-weight: bold">
-                            <td style="text-align: center">Name</td>
-                            <td>Gantt Chart</td>
-                            <td style="text-align: center">FAF</td>
-                            <td style="text-align: center">Total</td>
-                            <td style="text-align: center">Landlag</td>
-                            <td style="text-align: center">A-Cancel</td>
-                        </tr>
+            <div class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading" data-toggle="collapse" href="#collapse2">
+                        <h4 class="panel-title">Aerial Attacks</h4>
+                    </div>
+                    <div id="collapse2" class="panel-collapse collapse in">
+                        <div class="panel-body" aria-expanded="true">
+                            <table class="attacks">
+                                <col width="110px" />
+                                <col width="auto" />
+                                <col width="50px" />
+                                <col width="50px" />
+                                <col width="70px" />
+                                <col width="80px" />
 
-                        @{
-                            foreach (Aerial a in Model.GetAerials()) // get all normal attacks
-                            {
+                                <tr style="background-color: whitesmoke; color: black; font-weight: bold">
+                                    <td style="text-align: center">Name</td>
+                                    <td style="padding: 5px">Frame Data Visualization</td>
+                                    <td style="text-align: center">FAF</td>
+                                    <td style="text-align: center">Total</td>
+                                    <td style="text-align: center">Landlag</td>
+                                    <td style="text-align: center">A-Cancel</td>
+                                </tr>
+
+                                @{
+                                    foreach (Aerial a in Model.GetAerials()) // get all aerial attacks
+                                    {
+                                        <tr style="border: 1px solid silver;">
+                                            <td style="text-align: center">@a.Name</td>
+                                            <td style="padding: 5px;">@Html.Raw(a.ganttChart())</td>
+                                            <td style="text-align: center">@a.FAF</td>
+                                            <td style="text-align: center">@a.Total</td>
+                                            <td style="text-align: center">@a.LandLag</td>
+                                            <td style="text-align: center">&lt;@a.CancelRange[0] @a.CancelRange[1]&gt;</td>
+                                        </tr>
+                                    }
+                                }
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Specials -->
+            <div class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading" data-toggle="collapse" href="#collapse3">
+                        <h4 class="panel-title">Special Attacks</h4>
+                    </div>
+                    <div id="collapse3" class="panel-collapse collapse in">
+                        <div class="panel-body" aria-expanded="true">
+                            <table class="attacks">
+                                <col width="110px" />
+                                <col width="auto" />
+                                <col width="50px" />
+                                <col width="50px" />
+
+                                <tr style="background-color: whitesmoke; color: black; font-weight: bold">
+                                    <td style="text-align: center">Name</td>
+                                    <td style="padding: 5px">Frame Data Visualization</td>
+                                    <td style="text-align: center">FAF</td>
+                                    <td style="text-align: center">Total</td>
+                                </tr>
+                                @{
+                                    foreach (Special a in Model.Specials) // get all special attacks
+                                    {
                                 <tr style="border: 1px solid silver;">
                                     <td style="text-align: center">@a.Name</td>
-                                    <td style="padding:5px;">@Html.Raw(a.ganttChart())</td>
+                                    <td style="padding: 5px;">@Html.Raw(a.ganttChart())</td>
                                     <td style="text-align: center">@a.FAF</td>
                                     <td style="text-align: center">@a.Total</td>
-                                    <td style="text-align: center">@a.LandLag</td>
-                                    <td style="text-align: center">&lt;@a.CancelRange[0] @a.CancelRange[1]&gt;</td>
                                 </tr>
-                            }
-                        }
-                    </table>
+                                    }
+                                }
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <br />
 
-            <div class="tab">
-                <input id="tab-two" type="checkbox" name="tabs">
-                <label for="tab-two">Special Attacks</label>
-                <div class="tab-content">
-                    <table class="attacks">
-                        <col width="150px" style="border: 1px solid silver;" />
-                        <col width="auto" style="border: 1px solid silver;" />
-                        <col width="100px" style="border: 1px solid silver;" />
-                        @{
-                            foreach (Special a in Model.Specials) // get all normal attacks
-                            {
-
-                                <tr style="border: 1px solid silver;">
-                                    <td>
-                                        @a.Name
-                                        <div style="background-color: red; color: white; border-radius: 100%; width: 20px; height: 20px;
+            <!--    B button
+            <div style="background-color: red; color: white; border-radius: 100%; width: 20px; height: 20px;
                                 text-align: center; vertical-align: middle; font-weight: bold">B</div>
-                                    </td>
-                                    <td style="padding:5px;">@Html.Raw(a.ganttChart())</td>
-                                    <td style="text-align:center">@a.FAF</td>
-                                </tr>
+            -->
 
-                            }
-                        }
-                    </table>
-                </div>
-            </div>
         </td>
         </tr>
         <tr>

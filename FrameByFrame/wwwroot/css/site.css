@@ -75,16 +75,6 @@
         padding: 5px;
     }
 
-.attacks {
-    border: 1px solid silver;
-    width: 100%;
-    table-layout: fixed;
-}
-
-/*#attacks td {
-    padding: 10px;
-}*/
-
 #select {
     border-collapse: separate;
     border-spacing: 5px;
@@ -191,6 +181,58 @@ input[type=checkbox]:checked + label::after {
 input[type=radio]:checked + label::after {
     transform: rotateX(180deg);
 }
+
+.panel {
+    border: 1px solid silver;
+}
+
+.panel-heading {
+    background-color: silver !important;
+    cursor: pointer;
+}
+
+.panel-heading h4 {
+    color: black;
+    font-weight: bold;
+}
+
+.panel-heading:hover > h4 {
+    text-decoration: underline;
+}
+
+    .panel-heading:hover > h4::after {
+        font-weight: bold;
+    }
+
+.panel-heading h4::after {
+    content: "+";
+    float: right;
+    font-weight: normal;
+}
+
+.panel-body {
+    border: none !important;
+    background: #303030;
+    padding: 0;
+}
+
+.panel-body[aria-expanded="true"] + h4::after {
+    transform: rotate(315deg);
+}
+
+.panel-body::before, .panel-body::after {
+    display: none;
+}
+
+.attacks {
+    border: 1px solid silver;
+    width: 100%;
+    table-layout: fixed;
+}
+
+    .attacks col {
+        border: 1px solid silver;
+    }
 
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
