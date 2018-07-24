@@ -2,6 +2,38 @@
 
 @{
     ViewData["Title"] = "Dank";
+    Character a = Model[0];
+    Character b = Model[1];
 }
 
-<div style="margin-top:2vh">@Model[0].Name vs. @Model[1].Name</div>
+<div style="margin-top:2vh">@a.Name vs. @b.Name</div>
+<br/>
+<table>
+    <thead>
+        <tr><th colspan="2">@b.AerialD.Name</th></tr>
+        <tr><th>Name</th><th>Window</th></tr>
+    </thead>
+    @{
+        foreach (Tuple<FrameByFrame.Models.Action, int> t in a.getFrameWindows(b.AerialD))
+        {
+            if (t.Item2 >= 0)
+            {
+                <tr>
+                    <td>@t.Item1.Name</td>
+                    <td>@t.Item2</td>
+                </tr>
+            }
+        }
+        <tr><th colspan="2">Perfect Shield Windows</th></tr>
+        foreach (Tuple<FrameByFrame.Models.Action, int> t in a.getFrameWindows(b.AerialD, true))
+        {
+            if (t.Item2 >= 0)
+            {
+                <tr>
+                    <td>@t.Item1.Name</td>
+                    <td>@t.Item2</td>
+                </tr>
+            }
+        }
+    }
+</table>
