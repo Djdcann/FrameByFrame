@@ -10,24 +10,30 @@
 <br/>
 <table>
     <thead>
-        <tr><th colspan="2">@b.AerialN.Name</th></tr>
+        <tr><th colspan="2">@b.AerialD.Name</th></tr>
         <tr><th>Name</th><th>Window</th></tr>
     </thead>
     @{
-        foreach (Tuple<FrameByFrame.Models.Action, int> t in a.getFrameWindows(b.AerialN))
+        foreach (Tuple<FrameByFrame.Models.Action, int> t in a.getFrameWindows(b.AerialD))
         {
-            <tr>
-                <td>@t.Item1.Name</td>
-                <td>@t.Item2</td>
-            </tr>
+            if (t.Item2 >= 0)
+            {
+                <tr>
+                    <td>@t.Item1.Name</td>
+                    <td>@t.Item2</td>
+                </tr>
+            }
         }
         <tr><th colspan="2">Perfect Shield Windows</th></tr>
-        foreach (Tuple<FrameByFrame.Models.Action, int> t in a.getFrameWindows(b.AerialN, true))
+        foreach (Tuple<FrameByFrame.Models.Action, int> t in a.getFrameWindows(b.AerialD, true))
         {
-            <tr>
-                <td>@t.Item1.Name</td>
-                <td>@t.Item2</td>
-            </tr>
+            if (t.Item2 >= 0)
+            {
+                <tr>
+                    <td>@t.Item1.Name</td>
+                    <td>@t.Item2</td>
+                </tr>
+            }
         }
     }
 </table>
