@@ -43,7 +43,7 @@ namespace FrameByFrame.Models
             StringBuilder sb = new StringBuilder();
             StringBuilder sb2 = new StringBuilder();
             sb.Append("<table class='gantt'><tr>");
-            sb2.Append("</tr><tr>");
+            sb2.Append("</tr><tr class='gantt-numbers'>");
             int s = 1;
             for(int i=0;i<=StateChange.Length;i++)
             {

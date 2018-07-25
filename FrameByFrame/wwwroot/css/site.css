@@ -3,6 +3,7 @@
     padding-bottom: 20px;
     background-color: #101010;
     color: white;
+    font-size: 14px;
 }
 
 /* Wrapping element */
@@ -246,6 +247,10 @@ input[type=radio]:checked + label::after {
     width:100%;
 }
 
+.gantt-numbers {
+    font-size: .8em !important;
+}
+
 .lag, .hit, .invincible, .grab {
     text-align: center;
     color: black;
@@ -258,10 +263,12 @@ input[type=radio]:checked + label::after {
 
 .hit{
     background-color:red;
+    color: white;
 }
 
 .invincible{
     background-color:blue;
+    color: white;
 }
 
 .grab {
