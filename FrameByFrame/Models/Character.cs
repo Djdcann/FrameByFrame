@@ -147,16 +147,18 @@ namespace FrameByFrame.Models
             return imagePath + ImageFile;
         }
 
-        public IEnumerable<Tuple<Action, int>> getFrameWindows(Action a, bool perfectShield=false)
+        public IEnumerable<Tuple<Action, Window>> getFrameWindows(Action a)
         {
-            List<Tuple<Action, int>> fw = new List<Tuple<Action, int>>();
+            List<Tuple<Action, Window>> fw = new List<Tuple<Action, Window>>();
 
             foreach(Action s in getAttacks())
             {
-                int window = a.getEndlag() - s.getStartup(Attributes.Jumpsquat, perfectShield);
-                fw.Add(Tuple.Create(s, window));
+                int n = a.getEndlag() - s.getStartup(Attributes.Jumpsquat, false);
+                int p = a.getEndlag() - s.getStartup(Attributes.Jumpsquat, true);
+                
+                fw.Add(Tuple.Create(s, new Window(n, p)));
             }
-            return fw.OrderBy(x => x.Item1.Name).OrderByDescending(x => x.Item2);
+            return fw.OrderByDescending(x => x.Item2.Normal);
         }
     }
 }
