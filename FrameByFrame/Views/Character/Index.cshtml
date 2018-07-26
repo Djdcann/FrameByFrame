@@ -82,6 +82,47 @@
                 </div>
             </div>
 
+            <!-- Smashes -->
+            <div class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading" data-toggle="collapse" href="#collapse11">
+                        <h4 class="panel-title">Normal Attacks</h4>
+                    </div>
+                    <div id="collapse11" class="panel-collapse collapse in">
+                        <div class="panel-body" aria-expanded="true">
+                            <table class="attacks">
+                                <col width="110px" />
+                                <col width="auto" />
+                                <col width="50px" />
+                                <col width="50px" />
+                                <col width="50px" />
+
+                                <tr style="background-color: whitesmoke; color: black; font-weight: bold">
+                                    <td style="text-align: center">Name</td>
+                                    <td style="padding: 5px">Frame Data Visualization</td>
+                                    <td style="text-align: center">FAF</td>
+                                    <td style="text-align: center">Total</td>
+                                    <td style="text-align: center">Charge Frame</td>
+                                </tr>
+
+                                @{
+                                    foreach (Smash a in Model.GetSmashes()) // get all normal attacks
+                                    {
+                                        <tr style="border: 1px solid silver;">
+                                            <td style="text-align: center">@a.Name</td>
+                                            <td style="padding: 5px;">@Html.Raw(a.ganttChart())</td>
+                                            <td style="text-align: center">@a.FAF</td>
+                                            <td style="text-align: center">@a.Total</td>
+                                            <td style="text-align: center">@a.ChargeFrame</td>
+                                        </tr>
+                                    }
+                                }
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Aerials -->
             <div class="panel-group">
                 <div class="panel panel-default">
@@ -149,12 +190,12 @@
                                 @{
                                     foreach (Special a in Model.Specials) // get all special attacks
                                     {
-                                <tr style="border: 1px solid silver;">
-                                    <td style="text-align: center">@a.Name</td>
-                                    <td style="padding: 5px;">@Html.Raw(a.ganttChart())</td>
-                                    <td style="text-align: center">@a.FAF</td>
-                                    <td style="text-align: center">@a.Total</td>
-                                </tr>
+                                        <tr style="border: 1px solid silver;">
+                                            <td style="text-align: center">@a.Name</td>
+                                            <td style="padding: 5px;">@Html.Raw(a.ganttChart())</td>
+                                            <td style="text-align: center">@a.FAF</td>
+                                            <td style="text-align: center">@a.Total</td>
+                                        </tr>
                                     }
                                 }
                             </table>
@@ -164,9 +205,9 @@
             </div>
 
             <!--    B button
-            <div style="background-color: red; color: white; border-radius: 100%; width: 20px; height: 20px;
-                                text-align: center; vertical-align: middle; font-weight: bold">B</div>
-            -->
+    <div style="background-color: red; color: white; border-radius: 100%; width: 20px; height: 20px;
+                        text-align: center; vertical-align: middle; font-weight: bold">B</div>
+    -->
 
         </td>
         </tr>

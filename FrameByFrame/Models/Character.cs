@@ -42,7 +42,6 @@ namespace FrameByFrame.Models
         {
             List<Action> a = new List<Action>();
             a.AddRange(GetNormals());
-            a.Add(DashA);
             a.AddRange(GetSmashes());
             a.AddRange(GetAerials());
             a.Add(Grab);
@@ -56,7 +55,6 @@ namespace FrameByFrame.Models
         {
             List<Action> a = new List<Action>();
             a.AddRange(GetNormals());
-            a.Add(DashA);
             a.AddRange(GetSmashes());
             a.AddRange(GetAerials());
             a.Add(Grab);
@@ -100,7 +98,8 @@ namespace FrameByFrame.Models
             return new List<Normal>() {
                 TiltU,
                 TiltF,
-                TiltD
+                TiltD,
+                DashA
             };
         }
         public List<Smash> GetSmashes()
