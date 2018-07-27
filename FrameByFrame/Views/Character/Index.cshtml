@@ -3,339 +3,338 @@
 @{
     ViewData["Title"] = Model.Name + " Frame Data";
 }
+
+<!--
 <div style="margin-top:2vh">
     <a asp-action="Index" asp-controller="Home">Back to List</a>
 </div>
-<table id="char">
-    <tr>
-        <td style="vertical-align: top">
-            <div>
-                <h3 style="text-align: center; background-color: red; color: white; margin-bottom: 0; padding: 5px;
+-->
+
+<div class="row" style="margin-top:3vh">
+    <div class="col-sm-2">
+        <h3 style="text-align: center; background-color: red; color: white; margin: 0 auto; padding: 5px;
                         text-transform: uppercase; font-weight: bold; border-top-left-radius: 10px;
-                        border-top-right-radius: 10px">@Model.Name</h3>
-                    <img src="@Model.getImagePath()" style="background-color: white; width: 200px;
-                        border-bottom-left-radius: 10px; border-bottom-right-radius: 10px"/>
-                </div>
-                <br />
-                <table id="attr">
-                    <caption>Character Attributes</caption>
-                    <tr><th>Jumpsquat</th><td>@Model.Attributes.Jumpsquat</td></tr>
-                    <tr><th>Dash</th><td>@Model.Attributes.Dash</td></tr>
-                    <tr><th>Landlag</th><td>@Model.Attributes.Landlag</td></tr>
-                    <tr><th>SHAirtime</th><td>@Model.Attributes.SHAirtime</td></tr>
-                    <tr><th>FHAirtime</th><td>@Model.Attributes.FHAirtime</td></tr>
-                    <tr><th>AirJumps</th><td>@Model.Attributes.AirJumps</td></tr>
-                    <tr><th>Taunt Frames</th><td>@Model.Attributes.Taunt</td></tr>
-                </table>
-                <br />
-                <p>See Matchup for</p>
-                <select style="color:black" onchange="location += this.value;" on>
-                    <option selected>--</option>
+                        border-top-right-radius: 10px">
+            @Model.Name
+        </h3>
+        <img src="@Model.getImagePath()" style="background-color: white; width: 100%;
+            border-bottom-left-radius: 10px; border-bottom-right-radius: 10px" />
+        <p style="margin: 10px auto 5px auto">See Matchup for:</p>
+        <select style="color:black" onchange="location += this.value;" on>
+            <option selected>--</option>
+            @{
+                foreach (string s in Enum.GetNames(typeof(Roster)).OrderBy(x => x))
+                {
+                    string a = s[0] + s.Substring(1).ToLower();
+                    <option value="/@a">@a</option>
+                }
+
+            }
+        </select>
+    </div>
+    <div class="col-sm-3">
+        <table id="attr">
+            <caption>Character Attributes</caption>
+            <tr><th>Jumpsquat</th><td>@Model.Attributes.Jumpsquat</td></tr>
+            <tr><th>Dash</th><td>@Model.Attributes.Dash</td></tr>
+            <tr><th>Landlag</th><td>@Model.Attributes.Landlag</td></tr>
+            <tr><th>SHAirtime</th><td>@Model.Attributes.SHAirtime</td></tr>
+            <tr><th>FHAirtime</th><td>@Model.Attributes.FHAirtime</td></tr>
+            <tr><th>AirJumps</th><td>@Model.Attributes.AirJumps</td></tr>
+            <tr><th>Taunt Frames</th><td>@Model.Attributes.Taunt</td></tr>
+        </table>
+    </div>
+    <div class="col-sm-7">
+        <p>Character Description</p>
+    </div> 
+</div>
+
+<!-- NORMALS -->
+<div class="panel-group" style="margin-top: 20px">
+    <div class="panel panel-default">
+        <div class="panel-heading" data-toggle="collapse" href="#collapse1">
+            <h4 class="panel-title">Normal Attacks</h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse in">
+            <div class="panel-body" aria-expanded="true">
+                <table class="attacks">
+                    <col width="110px" />
+                    <col width="auto" />
+                    <col width="50px" />
+                    <col width="50px" />
+
+                    <tr style="background-color: whitesmoke; color: black; font-weight: bold">
+                        <td style="text-align: center">Name</td>
+                        <td style="padding: 5px">Frame Data Visualization</td>
+                        <td style="text-align: center">FAF</td>
+                        <td style="text-align: center">Total</td>
+                    </tr>
+
                     @{
-                        foreach (string s in Enum.GetNames(typeof(Roster)).OrderBy(x => x))
+                        foreach (Normal a in Model.GetNormals()) // get all normal attacks
                         {
-                            string a = s[0] + s.Substring(1).ToLower();
-                            <option value="/@a">@a</option>
+                            <tr style="border: 1px solid silver;">
+                                <td style="text-align: center">@a.Name</td>
+                                <td style="padding: 5px;">@Html.Raw(a.ganttChart())</td>
+                                <td style="text-align: center">@a.FAF</td>
+                                <td style="text-align: center">@a.Total</td>
+                            </tr>
                         }
-
-                     }
-                </select>
-            </td>
-
-        <td style="padding-left: 50px; vertical-align: top; padding-top: 20px">
-
-            <!-- NORMALS -->
-            <div class="panel-group">
-                <div class="panel panel-default">
-                    <div class="panel-heading" data-toggle="collapse" href="#collapse1">
-                        <h4 class="panel-title">Normal Attacks</h4>
-                    </div>
-                    <div id="collapse1" class="panel-collapse collapse in">
-                        <div class="panel-body" aria-expanded="true">
-                            <table class="attacks">
-                                <col width="110px" />
-                                <col width="auto" />
-                                <col width="50px" />
-                                <col width="50px" />
-
-                                <tr style="background-color: whitesmoke; color: black; font-weight: bold">
-                                    <td style="text-align: center">Name</td>
-                                    <td style="padding: 5px">Frame Data Visualization</td>
-                                    <td style="text-align: center">FAF</td>
-                                    <td style="text-align: center">Total</td>
-                                </tr>
-
-                                @{
-                                    foreach (Normal a in Model.GetNormals()) // get all normal attacks
-                                    {
-                                        <tr style="border: 1px solid silver;">
-                                            <td style="text-align: center">@a.Name</td>
-                                            <td style="padding: 5px;">@Html.Raw(a.ganttChart())</td>
-                                            <td style="text-align: center">@a.FAF</td>
-                                            <td style="text-align: center">@a.Total</td>
-                                        </tr>
-                                    }
-                                }
-                            </table>
-                        </div>
-                    </div>
-                </div>
+                    }
+                </table>
             </div>
+        </div>
+    </div>
+</div>
 
-            <!-- Jabs -->
-            <div class="panel-group">
-                <div class="panel panel-default">
-                    <div class="panel-heading" data-toggle="collapse" href="#collapse13">
-                        <h4 class="panel-title">Jabs</h4>
-                    </div>
-                    <div id="collapse13" class="panel-collapse collapse in">
-                        <div class="panel-body" aria-expanded="true">
-                            <table class="attacks">
-                                <col width="110px" />
-                                <col width="auto" />
-                                <col width="50px" />
-                                <col width="50px" />
-                                <col width="50px" />
-                                <col width="50px" />
+<!-- Jabs -->
+<div class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-heading" data-toggle="collapse" href="#collapse13">
+            <h4 class="panel-title">Jabs</h4>
+        </div>
+        <div id="collapse13" class="panel-collapse collapse in">
+            <div class="panel-body" aria-expanded="true">
+                <table class="attacks">
+                    <col width="110px" />
+                    <col width="auto" />
+                    <col width="50px" />
+                    <col width="50px" />
+                    <col width="50px" />
+                    <col width="50px" />
 
-                                <tr style="background-color: whitesmoke; color: black; font-weight: bold">
-                                    <td style="text-align: center">Name</td>
-                                    <td style="padding: 5px">Frame Data Visualization</td>
-                                    <td style="text-align: center">FAF</td>
-                                    <td style="text-align: center">Total</td>
-                                    <td style="text-align: center">Next Window</td>
-                                    <td style="text-align: center">Is Loop?</td>
-                                </tr>
+                    <tr style="background-color: whitesmoke; color: black; font-weight: bold">
+                        <td style="text-align: center">Name</td>
+                        <td style="padding: 5px">Frame Data Visualization</td>
+                        <td style="text-align: center">FAF</td>
+                        <td style="text-align: center">Total</td>
+                        <td style="text-align: center">Next Window</td>
+                        <td style="text-align: center">Is Loop?</td>
+                    </tr>
 
-                                @{
-                                    foreach (Jab a in Model.Jabs) // get all normal attacks
-                                    {
-                                        <tr style="border: 1px solid silver;">
-                                            <td style="text-align: center">@a.Name</td>
-                                            <td style="padding: 5px;">@Html.Raw(a.ganttChart())</td>
-                                            <td style="text-align: center">@a.FAF</td>
-                                            <td style="text-align: center">@a.Total</td>
-                                            <td style="text-align: center">@(a.NextWindow == 0 ? "-" : a.NextWindow.ToString())</td>
-                                            <td style="text-align: center">@(a.IsLoop ? "Yes" : "No")</td>
-                                        </tr>
-                                    }
-                                }
-                            </table>
-                        </div>
-                    </div>
-                </div>
+                    @{
+                        foreach (Jab a in Model.Jabs) // get all normal attacks
+                        {
+                            <tr style="border: 1px solid silver;">
+                                <td style="text-align: center">@a.Name</td>
+                                <td style="padding: 5px;">@Html.Raw(a.ganttChart())</td>
+                                <td style="text-align: center">@a.FAF</td>
+                                <td style="text-align: center">@a.Total</td>
+                                <td style="text-align: center">@(a.NextWindow == 0 ? "-" : a.NextWindow.ToString())</td>
+                                <td style="text-align: center">@(a.IsLoop ? "Yes" : "No")</td>
+                            </tr>
+                        }
+                    }
+                </table>
             </div>
+        </div>
+    </div>
+</div>
 
-            <!-- Smashes -->
-            <div class="panel-group">
-                <div class="panel panel-default">
-                    <div class="panel-heading" data-toggle="collapse" href="#collapse11">
-                        <h4 class="panel-title">Smash Attacks</h4>
-                    </div>
-                    <div id="collapse11" class="panel-collapse collapse in">
-                        <div class="panel-body" aria-expanded="true">
-                            <table class="attacks">
-                                <col width="110px" />
-                                <col width="auto" />
-                                <col width="50px" />
-                                <col width="50px" />
-                                <col width="50px" />
+<!-- Smashes -->
+<div class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-heading" data-toggle="collapse" href="#collapse11">
+            <h4 class="panel-title">Smash Attacks</h4>
+        </div>
+        <div id="collapse11" class="panel-collapse collapse in">
+            <div class="panel-body" aria-expanded="true">
+                <table class="attacks">
+                    <col width="110px" />
+                    <col width="auto" />
+                    <col width="50px" />
+                    <col width="50px" />
+                    <col width="50px" />
 
-                                <tr style="background-color: whitesmoke; color: black; font-weight: bold">
-                                    <td style="text-align: center">Name</td>
-                                    <td style="padding: 5px">Frame Data Visualization</td>
-                                    <td style="text-align: center">FAF</td>
-                                    <td style="text-align: center">Total</td>
-                                    <td style="text-align: center">Charge Frame</td>
-                                </tr>
+                    <tr style="background-color: whitesmoke; color: black; font-weight: bold">
+                        <td style="text-align: center">Name</td>
+                        <td style="padding: 5px">Frame Data Visualization</td>
+                        <td style="text-align: center">FAF</td>
+                        <td style="text-align: center">Total</td>
+                        <td style="text-align: center">Charge Frame</td>
+                    </tr>
 
-                                @{
-                                    foreach (Smash a in Model.GetSmashes()) // get all normal attacks
-                                    {
-                                        <tr style="border: 1px solid silver;">
-                                            <td style="text-align: center">@a.Name</td>
-                                            <td style="padding: 5px;">@Html.Raw(a.ganttChart())</td>
-                                            <td style="text-align: center">@a.FAF</td>
-                                            <td style="text-align: center">@a.Total</td>
-                                            <td style="text-align: center">@a.ChargeFrame</td>
-                                        </tr>
-                                    }
-                                }
-                            </table>
-                        </div>
-                    </div>
-                </div>
+                    @{
+                        foreach (Smash a in Model.GetSmashes()) // get all normal attacks
+                        {
+                            <tr style="border: 1px solid silver;">
+                                <td style="text-align: center">@a.Name</td>
+                                <td style="padding: 5px;">@Html.Raw(a.ganttChart())</td>
+                                <td style="text-align: center">@a.FAF</td>
+                                <td style="text-align: center">@a.Total</td>
+                                <td style="text-align: center">@a.ChargeFrame</td>
+                            </tr>
+                        }
+                    }
+                </table>
             </div>
+        </div>
+    </div>
+</div>
 
-            <!-- Aerials -->
-            <div class="panel-group">
-                <div class="panel panel-default">
-                    <div class="panel-heading" data-toggle="collapse" href="#collapse2">
-                        <h4 class="panel-title">Aerial Attacks</h4>
-                    </div>
-                    <div id="collapse2" class="panel-collapse collapse in">
-                        <div class="panel-body" aria-expanded="true">
-                            <table class="attacks">
-                                <col width="110px" />
-                                <col width="auto" />
-                                <col width="50px" />
-                                <col width="50px" />
-                                <col width="70px" />
-                                <col width="80px" />
+<!-- Aerials -->
+<div class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-heading" data-toggle="collapse" href="#collapse2">
+            <h4 class="panel-title">Aerial Attacks</h4>
+        </div>
+        <div id="collapse2" class="panel-collapse collapse in">
+            <div class="panel-body" aria-expanded="true">
+                <table class="attacks">
+                    <col width="110px" />
+                    <col width="auto" />
+                    <col width="50px" />
+                    <col width="50px" />
+                    <col width="70px" />
+                    <col width="80px" />
 
-                                <tr style="background-color: whitesmoke; color: black; font-weight: bold">
-                                    <td style="text-align: center">Name</td>
-                                    <td style="padding: 5px">Frame Data Visualization</td>
-                                    <td style="text-align: center">FAF</td>
-                                    <td style="text-align: center">Total</td>
-                                    <td style="text-align: center">Landlag</td>
-                                    <td style="text-align: center">A-Cancel</td>
-                                </tr>
+                    <tr style="background-color: whitesmoke; color: black; font-weight: bold">
+                        <td style="text-align: center">Name</td>
+                        <td style="padding: 5px">Frame Data Visualization</td>
+                        <td style="text-align: center">FAF</td>
+                        <td style="text-align: center">Total</td>
+                        <td style="text-align: center">Landlag</td>
+                        <td style="text-align: center">A-Cancel</td>
+                    </tr>
 
-                                @{
-                                    foreach (Aerial a in Model.GetAerials()) // get all aerial attacks
-                                    {
-                                        <tr style="border: 1px solid silver;">
-                                            <td style="text-align: center">@a.Name</td>
-                                            <td style="padding: 10px 10px 5px 10px;">@Html.Raw(a.ganttChart())</td>
-                                            <td style="text-align: center">@a.FAF</td>
-                                            <td style="text-align: center">@a.Total</td>
-                                            <td style="text-align: center">@a.LandLag</td>
-                                            <td style="text-align: center">&lt;@a.CancelRange[0] @a.CancelRange[1]&gt;</td>
-                                        </tr>
-                                    }
-                                }
-                            </table>
-                        </div>
-                    </div>
-                </div>
+                    @{
+                        foreach (Aerial a in Model.GetAerials()) // get all aerial attacks
+                        {
+                            <tr style="border: 1px solid silver;">
+                                <td style="text-align: center">@a.Name</td>
+                                <td style="padding: 10px 10px 5px 10px;">@Html.Raw(a.ganttChart())</td>
+                                <td style="text-align: center">@a.FAF</td>
+                                <td style="text-align: center">@a.Total</td>
+                                <td style="text-align: center">@a.LandLag</td>
+                                <td style="text-align: center">&lt;@a.CancelRange[0] @a.CancelRange[1]&gt;</td>
+                            </tr>
+                        }
+                    }
+                </table>
             </div>
+        </div>
+    </div>
+</div>
 
-            <!-- Grabs -->
-            <div class="panel-group">
-                <div class="panel panel-default">
-                    <div class="panel-heading" data-toggle="collapse" href="#collapse12">
-                        <h4 class="panel-title">Grabs</h4>
-                    </div>
-                    <div id="collapse12" class="panel-collapse collapse in">
-                        <div class="panel-body" aria-expanded="true">
-                            <table class="attacks">
-                                <col width="110px" />
-                                <col width="auto" />
-                                <col width="50px" />
-                                <col width="50px" />
+<!-- Grabs -->
+<div class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-heading" data-toggle="collapse" href="#collapse12">
+            <h4 class="panel-title">Grabs</h4>
+        </div>
+        <div id="collapse12" class="panel-collapse collapse in">
+            <div class="panel-body" aria-expanded="true">
+                <table class="attacks">
+                    <col width="110px" />
+                    <col width="auto" />
+                    <col width="50px" />
+                    <col width="50px" />
 
-                                <tr style="background-color: whitesmoke; color: black; font-weight: bold">
-                                    <td style="text-align: center">Name</td>
-                                    <td style="padding: 5px">Frame Data Visualization</td>
-                                    <td style="text-align: center">FAF</td>
-                                    <td style="text-align: center">Total</td>
-                                </tr>
-                                <tr style="border: 1px solid silver;">
-                                    <td style="text-align: center">@Model.Grab.Name</td>
-                                    <td style="padding: 5px;">@Html.Raw(Model.Grab.ganttChart())</td>
-                                    <td style="text-align: center">@Model.Grab.FAF</td>
-                                    <td style="text-align: center">@Model.Grab.Total</td>
-                                </tr>
-                                <tr style="border: 1px solid silver;">
-                                    <td style="text-align: center">@Model.GrabD.Name</td>
-                                    <td style="padding: 5px;">@Html.Raw(Model.GrabD.ganttChart())</td>
-                                    <td style="text-align: center">@Model.GrabD.FAF</td>
-                                    <td style="text-align: center">@Model.GrabD.Total</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+                    <tr style="background-color: whitesmoke; color: black; font-weight: bold">
+                        <td style="text-align: center">Name</td>
+                        <td style="padding: 5px">Frame Data Visualization</td>
+                        <td style="text-align: center">FAF</td>
+                        <td style="text-align: center">Total</td>
+                    </tr>
+                    <tr style="border: 1px solid silver;">
+                        <td style="text-align: center">@Model.Grab.Name</td>
+                        <td style="padding: 5px;">@Html.Raw(Model.Grab.ganttChart())</td>
+                        <td style="text-align: center">@Model.Grab.FAF</td>
+                        <td style="text-align: center">@Model.Grab.Total</td>
+                    </tr>
+                    <tr style="border: 1px solid silver;">
+                        <td style="text-align: center">@Model.GrabD.Name</td>
+                        <td style="padding: 5px;">@Html.Raw(Model.GrabD.ganttChart())</td>
+                        <td style="text-align: center">@Model.GrabD.FAF</td>
+                        <td style="text-align: center">@Model.GrabD.Total</td>
+                    </tr>
+                </table>
             </div>
+        </div>
+    </div>
+</div>
 
-            <!-- Specials -->
-            <div class="panel-group">
-                <div class="panel panel-default">
-                    <div class="panel-heading" data-toggle="collapse" href="#collapse3">
-                        <h4 class="panel-title">Special Attacks</h4>
-                    </div>
-                    <div id="collapse3" class="panel-collapse collapse in">
-                        <div class="panel-body" aria-expanded="true">
-                            <table class="attacks">
-                                <col width="110px" />
-                                <col width="auto" />
-                                <col width="50px" />
-                                <col width="50px" />
+<!-- Specials -->
+<div class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-heading" data-toggle="collapse" href="#collapse3">
+            <h4 class="panel-title">Special Attacks</h4>
+        </div>
+        <div id="collapse3" class="panel-collapse collapse in">
+            <div class="panel-body" aria-expanded="true">
+                <table class="attacks">
+                    <col width="110px" />
+                    <col width="auto" />
+                    <col width="50px" />
+                    <col width="50px" />
 
-                                <tr style="background-color: whitesmoke; color: black; font-weight: bold">
-                                    <td style="text-align: center">Name</td>
-                                    <td style="padding: 5px">Frame Data Visualization</td>
-                                    <td style="text-align: center">FAF</td>
-                                    <td style="text-align: center">Total</td>
-                                </tr>
-                                @{
-                                    foreach (Special a in Model.Specials) // get all special attacks
-                                    {
-                                        <tr style="border: 1px solid silver;">
-                                            <td style="text-align: center">@a.Name</td>
-                                            <td style="padding: 5px;">@Html.Raw(a.ganttChart())</td>
-                                            <td style="text-align: center">@a.FAF</td>
-                                            <td style="text-align: center">@a.Total</td>
-                                        </tr>
-                                    }
-                                }
-                            </table>
-                        </div>
-                    </div>
-                </div>
+                    <tr style="background-color: whitesmoke; color: black; font-weight: bold">
+                        <td style="text-align: center">Name</td>
+                        <td style="padding: 5px">Frame Data Visualization</td>
+                        <td style="text-align: center">FAF</td>
+                        <td style="text-align: center">Total</td>
+                    </tr>
+                    @{
+                        foreach (Special a in Model.Specials) // get all special attacks
+                        {
+                            <tr style="border: 1px solid silver;">
+                                <td style="text-align: center">@a.Name</td>
+                                <td style="padding: 5px;">@Html.Raw(a.ganttChart())</td>
+                                <td style="text-align: center">@a.FAF</td>
+                                <td style="text-align: center">@a.Total</td>
+                            </tr>
+                        }
+                    }
+                </table>
             </div>
+        </div>
+    </div>
+</div>
 
-            <!-- Evasive -->
-            <div class="panel-group">
-                <div class="panel panel-default">
-                    <div class="panel-heading" data-toggle="collapse" href="#collapse22">
-                        <h4 class="panel-title">Evasive Options</h4>
-                    </div>
-                    <div id="collapse22" class="panel-collapse collapse in">
-                        <div class="panel-body" aria-expanded="true">
-                            <table class="attacks">
-                                <col width="110px" />
-                                <col width="auto" />
-                                <col width="50px" />
-                                <col width="50px" />
+<!-- Evasive -->
+<div class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-heading" data-toggle="collapse" href="#collapse22">
+            <h4 class="panel-title">Evasive Options</h4>
+        </div>
+        <div id="collapse22" class="panel-collapse collapse in">
+            <div class="panel-body" aria-expanded="true">
+                <table class="attacks">
+                    <col width="110px" />
+                    <col width="auto" />
+                    <col width="50px" />
+                    <col width="50px" />
 
-                                <tr style="background-color: whitesmoke; color: black; font-weight: bold">
-                                    <td style="text-align: center">Name</td>
-                                    <td style="padding: 5px">Frame Data Visualization</td>
-                                    <td style="text-align: center">FAF</td>
-                                    <td style="text-align: center">Total</td>
-                                </tr>
+                    <tr style="background-color: whitesmoke; color: black; font-weight: bold">
+                        <td style="text-align: center">Name</td>
+                        <td style="padding: 5px">Frame Data Visualization</td>
+                        <td style="text-align: center">FAF</td>
+                        <td style="text-align: center">Total</td>
+                    </tr>
 
-                                @{
-                                    foreach (Evasive a in Model.GetEvasive()) // get all aerial attacks
-                                    {
-                                        <tr style="border: 1px solid silver;">
-                                            <td style="text-align: center">@a.Name</td>
-                                            <td style="padding: 10px 10px 5px 10px;">@Html.Raw(a.ganttChart())</td>
-                                            <td style="text-align: center">@a.FAF</td>
-                                            <td style="text-align: center">@a.Total</td>
-                                        </tr>
-                                    }
-                                }
-                            </table>
-                        </div>
-                    </div>
-                </div>
+                    @{
+                        foreach (Evasive a in Model.GetEvasive()) // get all aerial attacks
+                        {
+                            <tr style="border: 1px solid silver;">
+                                <td style="text-align: center">@a.Name</td>
+                                <td style="padding: 10px 10px 5px 10px;">@Html.Raw(a.ganttChart())</td>
+                                <td style="text-align: center">@a.FAF</td>
+                                <td style="text-align: center">@a.Total</td>
+                            </tr>
+                        }
+                    }
+                </table>
             </div>
+        </div>
+    </div>
+</div>
 
-            <!--    B button
+<!--    B button
     <div style="background-color: red; color: white; border-radius: 100%; width: 20px; height: 20px;
-                        text-align: center; vertical-align: middle; font-weight: bold">B</div>
-    -->
+        text-align: center; vertical-align: middle; font-weight: bold">B</div>
+-->
 
-        </td>
-        </tr>
-        <tr>
-            <td>
-                <div>
-                    <a asp-action="Index" asp-controller="Home">Back to List</a>
-                </div>
-            </td>
-        </tr>
-</table>
+<div>
+    <a asp-action="Index" asp-controller="Home">Back to List</a>
+</div>
+            
