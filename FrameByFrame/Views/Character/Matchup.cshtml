@@ -4,20 +4,61 @@
     ViewData["Title"] = "Dank";
     Character a = Model[0];
     Character b = Model[1];
+    IEnumerable<FrameByFrame.Models.Action> actions = b.getActions();
 }
 
-<div style="margin-top:2vh">@a.Name vs. @b.Name</div>
+<div class="row" style="margin-top:3vh">
+    <div class="col-sm-4">
+        <a href="/Character/@(ViewContext.RouteData.Values["id"])">
+            <h3 style="text-align: center; background-color: red; color: white; margin: 0 auto; padding: 5px;
+                        text-transform: uppercase; font-weight: bold; border-top-left-radius: 10px;
+                        border-top-right-radius: 10px">
+                @a.Name
+            </h3>
+        </a>
+        <img src="@a.getImagePath()" style="background-color: white; width: 100%;
+            border-bottom-left-radius: 10px; border-bottom-right-radius: 10px" />
+    </div>
+    <div class="col-sm-4 text-center">
+        <br/><br />
+        <p>VS.</p>
+        <a href="/Character/@(ViewContext.RouteData.Values["id2"])/@(ViewContext.RouteData.Values["id"])" class="btn btn-primary" role="button">&lArr; Switch &rArr;</a>
+    </div>
+    <div class="col-sm-4">
+        <a href="/Character/@(ViewContext.RouteData.Values["id2"])">
+            <h3 style="text-align: center; background-color: red; color: white; margin: 0 auto; padding: 5px;
+                        text-transform: uppercase; font-weight: bold; border-top-left-radius: 10px;
+                        border-top-right-radius: 10px">
+                @b.Name
+            </h3>
+        </a>
+        <img src="@b.getImagePath()" style="background-color: white; width: 100%;
+            border-bottom-left-radius: 10px; border-bottom-right-radius: 10px" />
+    </div>
+</div>
 <br/>
+<div style="width:15em">
+    <select style="color:black" class="form-control" id="att" onchange="$('#p'+this.value).show()">
+        <option>--</option>
+        @{
+            for (int i = 0; i<actions.Count();i++)
+            {
+                <option value="@(i)">@actions.ElementAt(i).Name</option>
+            }
+         }
+    </select>
+</div>
+<br />
 <div class="panel-group">
     @{ 
-        int i=1;
+            int j=0;
         foreach (FrameByFrame.Models.Action z in b.getActions())
         {
-        <div class="panel panel-default">
-            <div class="panel-heading" data-toggle="collapse" href="#collapse@(i)">
+        <div class="panel panel-default" id="p@(j)" style="display:none">
+            <div class="panel-heading" data-toggle="collapse" href="#collapse@(j)">
                 <h4 class="panel-title">@z.Name Punishes</h4>
             </div>
-            <div id="collapse@(i++)" class="panel-collapse collapse">
+            <div id="collapse@(j++)" class="panel-collapse collapse">
                 <div class="panel-body" aria-expanded="true">
                     <table class="attacks">
                         <col width="110px" />
