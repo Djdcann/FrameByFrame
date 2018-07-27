@@ -158,7 +158,7 @@ namespace FrameByFrame.Models
                 
                 fw.Add(Tuple.Create(s, new Window(n, p)));
             }
-            return fw.OrderByDescending(x => x.Item2.Normal);
+            return fw.OrderByDescending(x => x.Item2.Normal + x.Item2.Perfect);
         }
     }
 }
