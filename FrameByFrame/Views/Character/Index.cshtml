@@ -10,7 +10,7 @@
 </div>
 -->
 
-<div class="row" style="margin-top:3vh">
+<div class="row" style="margin-top:3.5vh">
     <div class="col-sm-2">
         <h3 style="text-align: center; background-color: red; color: white; margin: 0 auto; padding: 5px;
                         text-transform: uppercase; font-weight: bold; border-top-left-radius: 10px;
@@ -20,7 +20,7 @@
         <img src="@Model.getImagePath()" style="background-color: white; width: 100%;
             border-bottom-left-radius: 10px; border-bottom-right-radius: 10px" />
         <p style="margin: 10px auto 5px auto">See Matchup for:</p>
-        <select style="color:black" onchange="location += this.value;" on>
+        <select style="color: black; width: 75%" onchange="location += this.value;" on>
             <option selected>--</option>
             @{
                 foreach (string s in Enum.GetNames(typeof(Roster)).OrderBy(x => x))
@@ -28,9 +28,9 @@
                     string a = s[0] + s.Substring(1).ToLower();
                     <option value="/@a">@a</option>
                 }
-
             }
         </select>
+        <button class="btn btn-danger" style="width: 20%; float: right; border: none; padding: 0">Go</button>
     </div>
     <div class="col-sm-3">
         <table id="attr">

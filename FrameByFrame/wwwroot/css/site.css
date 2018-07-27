@@ -47,11 +47,6 @@
     margin: 15px;
 }
 
-#char {
-    border-collapse: separate;
-    border-spacing: 10px;
-}
-
 #attr {
     border: 1px solid silver;
     width: 100%;
