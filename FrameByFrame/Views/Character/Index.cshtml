@@ -12,25 +12,30 @@
 
 <div class="row" style="margin-top:3vh">
     <div class="col-sm-3">
-        <h3 style="text-align: center; background-color: red; color: white; margin: 0 auto; padding: 5px;
+        <div>
+            <h3 style="text-align: center; background-color: red; color: white; margin: 0 auto; padding: 5px;
                         text-transform: uppercase; font-weight: bold; border-top-left-radius: 10px;
                         border-top-right-radius: 10px">
-            @Model.Name
-        </h3>
-        <img src="@Model.getImagePath()" style="background-color: white; width: 100%;
+                @Model.Name
+            </h3>
+            <img src="@Model.getImagePath()" style="background-color: white; width: 100%;
             border-bottom-left-radius: 10px; border-bottom-right-radius: 10px" />
-        <p style="margin: 10px auto 5px auto">See Matchup for:</p>
-        <select id="muSel" class="form-control" style="color: black; display:inline-block; width: 75%" on>
-            <option selected>--</option>
-            @{
-                foreach (string s in Enum.GetNames(typeof(Roster)).OrderBy(x => x))
-                {
-                    string a = s[0] + s.Substring(1).ToLower();
-                    <option value="/@a">@a</option>
+        </div>
+        <br />
+        <div>
+            <label for="muSel">See Matchup for:</label>
+            <select id="muSel" class="form-control" style="color: black; display:inline-block; width: 75%" on>
+                <option selected>--</option>
+                @{
+                    foreach (string s in Enum.GetNames(typeof(Roster)).OrderBy(x => x))
+                    {
+                        string a = s[0] + s.Substring(1).ToLower();
+                        <option value="/@a">@a</option>
+                    }
                 }
-            }
-        </select>
-        <button class="btn btn-danger" style="width: 20%; float:right;padding: 6px 0px 6px 0px" onclick="location += $('#muSel').val() || ''">Go</button>
+            </select>
+            <button class="btn btn-danger" style="width: 20%; float:right;padding: 6px 0px 6px 0px" onclick="location += $('#muSel').val() || ''">Go</button>
+        </div>
     </div>
     <div class="col-sm-3">
         <table id="attr">
@@ -48,7 +53,7 @@
         <p>Character Description</p>
     </div> 
 </div>
-
+<br />
 <!-- NORMALS -->
 <div class="panel-group" style="margin-top: 20px">
     <div class="panel panel-default">
@@ -58,7 +63,7 @@
         <div id="collapse1" class="panel-collapse collapse in">
             <div class="panel-body" aria-expanded="true">
                 <table class="attacks">
-                    <col width="110px" />
+                    <col width="80px" />
                     <col width="auto" />
                     <col width="50px" />
                     <col width="50px" />
@@ -96,7 +101,7 @@
         <div id="collapse13" class="panel-collapse collapse in">
             <div class="panel-body" aria-expanded="true">
                 <table class="attacks">
-                    <col width="110px" />
+                    <col width="80px" />
                     <col width="auto" />
                     <col width="50px" />
                     <col width="50px" />
@@ -140,7 +145,7 @@
         <div id="collapse11" class="panel-collapse collapse in">
             <div class="panel-body" aria-expanded="true">
                 <table class="attacks">
-                    <col width="110px" />
+                    <col width="80px" />
                     <col width="auto" />
                     <col width="50px" />
                     <col width="50px" />
@@ -181,7 +186,7 @@
         <div id="collapse2" class="panel-collapse collapse in">
             <div class="panel-body" aria-expanded="true">
                 <table class="attacks">
-                    <col width="110px" />
+                    <col width="80px" />
                     <col width="auto" />
                     <col width="50px" />
                     <col width="50px" />
@@ -225,7 +230,7 @@
         <div id="collapse12" class="panel-collapse collapse in">
             <div class="panel-body" aria-expanded="true">
                 <table class="attacks">
-                    <col width="110px" />
+                    <col width="80px" />
                     <col width="auto" />
                     <col width="50px" />
                     <col width="50px" />
@@ -263,7 +268,7 @@
         <div id="collapse3" class="panel-collapse collapse in">
             <div class="panel-body" aria-expanded="true">
                 <table class="attacks">
-                    <col width="110px" />
+                    <col width="80px" />
                     <col width="auto" />
                     <col width="50px" />
                     <col width="50px" />
@@ -300,7 +305,7 @@
         <div id="collapse22" class="panel-collapse collapse in">
             <div class="panel-body" aria-expanded="true">
                 <table class="attacks">
-                    <col width="110px" />
+                    <col width="80px" />
                     <col width="auto" />
                     <col width="50px" />
                     <col width="50px" />

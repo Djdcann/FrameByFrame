@@ -109,18 +109,6 @@ input {
     z-index: -1;
 }
 
-label {
-    position: relative;
-    display: block;
-    padding: 0 0 0 1em;
-    background: silver;
-    color: black;
-    font-weight: bold;
-    line-height: 3;
-    cursor: pointer;
-    margin-bottom: 0;
-}
-
 .tab-content {
     max-height: 0;
     overflow: hidden;
@@ -133,20 +121,6 @@ label {
 /* :checked */
 input:checked ~ .tab-content {
     max-height: 50em;
-}
-/* Icon */
-label::after {
-    position: absolute;
-    right: 0;
-    top: 0;
-    display: block;
-    width: 3em;
-    height: 3em;
-    line-height: 3;
-    text-align: center;
-    -webkit-transition: all .35s;
-    -o-transition: all .35s;
-    transition: all .35s;
 }
 
 input[type=checkbox] + label::after {
