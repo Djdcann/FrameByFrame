@@ -3,3 +3,48 @@
 }
 
 <h1>This is the help page where we explain things</h1>
+
+<h2>Frame Data Chart</h2>
+
+<p>***** INSERT GANTT CHART HERE *****</p>
+
+<div class="row">
+    <div class="col-sm-8">
+        <p>
+            The chart above is an example of how attack moves are visualized on this site. Each move can be 
+            seen as a sequence of frames within the game. While this sequence plays out, the character model's 
+            state is classified as one of the following:
+        </p>
+        <div style="margin-left: 20px">
+            <p style="font-weight: bold; color: yellow">LAG:</p>
+            <p>
+                When a move is performed, there is often a period of lag, both before and after the active 
+                hit-boxes, where the player is unable to move the character, and the character is in a vulnerable 
+                state because they're also not in a state where they can do damage to the opponent.
+            </p>
+            <p style="font-weight: bold; color: red">HIT-BOX:</p>
+            <p>
+                Hit-boxes are the areas where the move does damage to the opponent. They're called boxes because 
+                they don't necessarily represent the character as a whole. In many cases, such as the example GIF, 
+                the hit-boxes only cover part of the model's body so that a punch will only hit the opponent if the 
+                model's fist is in the vicinity of the opponent.
+            </p>
+            <p style="font-weight: bold; color: mediumpurple">GRAB-BOX:</p>
+            <p>
+                Grab-boxes are like hit-boxes, but instead of doing damage to the opponent, they allow for your 
+                character to hold the opponent so that they cannot move. Then, once holding, you can perform 
+                attacks on the opponent character until they break out of the hold.
+            </p>
+            <p style="font-weight: bold; color: blue">INVULNERABLE:</p>
+            <p>
+                In some situations, a part of the character model will become invulnerable to damage while executing 
+                an attack move. For example, the GIF shows Fox's head is invulnerable at the beginning of his 
+                <b>up-smash</b> move. If that part of Fox's body was inside a hit-box of the opponent character model 
+                at that point, the move would do no damage to Fox.
+            </p>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <img src="~/images/FoxUpSmash.gif" style="width: 100%" />
+    </div>
+</div>
