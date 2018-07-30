@@ -3,27 +3,25 @@
     FrameByFrame.Models.Smash a = FrameByFrame.Controllers.FrameDataController.roster[10].SmashU;
 }
 
-<h1>This is the help page where we explain things</h1>
-
-<h2>Frame Data Chart</h2>
+<h1>Frame Data Chart</h1>
 
 <div>
-    <table class="attacks">
-        <col width="80px" />
+    <table class="attacks" style="margin-top: 20px">
+        <col width="100px" />
         <col width="auto" />
         <col width="50px" />
         <col width="50px" />
-        <col width="50px" />
+        <col width="60px" />
 
         <tr style="background-color: whitesmoke; color: black; font-weight: bold">
-            <td style="text-align: center">Name</td>
+            <td style="text-align: center">Attack Name</td>
             <td style="padding: 5px">Frame Data Visualization</td>
             <td style="text-align: center">FAF</td>
             <td style="text-align: center">Total</td>
             <td style="text-align: center">Charge Frame</td>
         </tr>
         <tr style="border: 1px solid silver;">
-            <td style="text-align: center">@a.Name</td>
+            <td style="text-align: center"><b>Up-smash</b> (Fox)</td>
             <td style="padding: 5px;">@Html.Raw(a.ganttChart())</td>
             <td style="text-align: center">@a.FAF</td>
             <td style="text-align: center">@a.Total</td>
@@ -59,16 +57,33 @@
                 character to hold the opponent so that they cannot move. Then, once holding, you can perform
                 attacks on the opponent character until they break out of the hold.
             </p>
-            <p style="font-weight: bold; color: blue">INVULNERABLE:</p>
+            <p style="font-weight: bold; color: dodgerblue">INVULNERABLE:</p>
             <p>
                 In some situations, a part of the character model will become invulnerable to damage while executing
                 an attack move. For example, the GIF shows Fox's head is invulnerable at the beginning of his
                 <b>up-smash</b> move. If that part of Fox's body was inside a hit-box of the opponent character model
-                at that point, the move would do no damage to Fox.
+                at that point, the move would do no damage to Fox. This blue is not shown in the chart for this 
+                particular move because the majority of the character model is still vulnerable at this time.
             </p>
         </div>
+        <p>
+            The <b>FAF</b> refers to the First Actionable Frame. This is the frame number at which you can execute 
+            another move for the first time after executing the current move.
+        </p>
+        <p>
+            The <b>Total</b> column refers to the total number of frames it takes to execute the move in its entirety. 
+            This number is often one less than the FAF, as is the case in our example. However, the end of some moves can 
+            be escaped before the end of the animation by executing another move. In these cases, the FAF would be less 
+            than the total number of frames.
+        </p>
+        <p>
+            The <b>Charge Frame</b> refers to the 
+        </p>
     </div>
     <div class="col-sm-4">
-        <img src="~/images/FoxUpSmash.gif" style="width: 100%" />
+        <figure>
+            <img src="~/images/FoxUpSmash.gif" style="width: 100%; border: 1px solid silver" />
+            <figcaption style="text-align: center; margin-top: 5px">GIF of Fox's <b>up-smash</b> state changes</figcaption>
+        </figure>
     </div>
 </div>
