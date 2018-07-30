@@ -3,10 +3,9 @@
 @{
     ViewData["Title"] = "Character Select";
 }
-<audio autoplay>
-    <source src="~/sound/nr_title01.dsp.wav" type="audio/mpeg">
-</audio>
-<div style="margin-top:3vh;"><img class="img-responsive" src="~/images/title.png" style="margin:auto;height:30vh"/></div>
+<audio id="title" src="~/sound/nr_title01.dsp.wav"></audio>
+
+<div style="margin-top:3vh;"><img class="img-responsive" src="~/images/title.png" style="margin:auto;height:30vh" onclick="$('#title').get(0).play();" /></div>
 <table id="select" style="width:100%; text-align:center; margin-top: 5vh">
     <tr>
         <td>
