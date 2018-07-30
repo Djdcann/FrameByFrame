@@ -25,7 +25,7 @@
         <div>
             <label for="muSel">See Matchup for:</label>
             <select id="muSel" class="form-control" style="color: black; display:inline-block; width: 75%" on>
-                <option selected>--</option>
+                <option value="" selected>--</option>
                 @{
                     foreach (string s in Enum.GetNames(typeof(Roster)).OrderBy(x => x))
                     {

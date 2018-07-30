@@ -39,6 +39,14 @@
     width: 100%;
 }
 
+#fw_filter label{
+    color:white;
+}
+
+#fw_filter label input{
+    color: black;
+}
+
 #attr caption {
     display: table-caption;
     text-align: center;
@@ -103,12 +111,6 @@
     overflow: hidden;
 }
 
-input {
-    position: absolute;
-    opacity: 0;
-    z-index: -1;
-}
-
 .tab-content {
     max-height: 0;
     overflow: hidden;
@@ -116,27 +118,6 @@ input {
     -webkit-transition: max-height .35s;
     -o-transition: max-height .35s;
     transition: max-height .35s;
-}
-
-/* :checked */
-input:checked ~ .tab-content {
-    max-height: 50em;
-}
-
-input[type=checkbox] + label::after {
-    content: "+";
-}
-
-input[type=radio] + label::after {
-    content: "\25BC";
-}
-
-input[type=checkbox]:checked + label::after {
-    transform: rotate(315deg);
-}
-
-input[type=radio]:checked + label::after {
-    transform: rotateX(180deg);
 }
 
 .panel {
