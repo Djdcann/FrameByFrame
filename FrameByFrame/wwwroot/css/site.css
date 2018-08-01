@@ -37,6 +37,7 @@
 #attr {
     border: 1px solid silver;
     width: 100%;
+    background: #303030;
 }
 
 #fw_filter label{
