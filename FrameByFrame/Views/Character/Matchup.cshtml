@@ -8,67 +8,71 @@
 }
 
 <div class="row" style="margin-top:3vh">
-    <div class="col-sm-4">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-3">
         <a href="/Character/@(ViewContext.RouteData.Values["id"])">
-            <h3 style="text-align: center; background-color: red; color: white; margin: 0 auto; padding: 5px;
-                        text-transform: uppercase; font-weight: bold; border-top-left-radius: 10px;
-                        border-top-right-radius: 10px">
+            <h2 style="text-align: center; background-color: red; color: white; margin: 0 auto; padding: 5px;
+                    text-transform: uppercase; font-weight: bold; border-top-left-radius: 10px;
+                    border-top-right-radius: 10px">
                 @a.Name
-            </h3>
+            </h2>
         </a>
         <img src="@a.getImagePath()" style="background-color: white; width: 100%;
-            border-bottom-left-radius: 10px; border-bottom-right-radius: 10px" />
+        border-bottom-left-radius: 10px; border-bottom-right-radius: 10px" />
     </div>
     <div class="col-sm-4 text-center">
-        <h2>Out of Shield Matchup</h2>
-        <p>VS.</p>
-        <a href="/Character/@(ViewContext.RouteData.Values["id2"])/@(ViewContext.RouteData.Values["id"])" class="btn btn-primary" role="button">&lArr; Switch &rArr;</a>
+        <h2 style="text-align: center; font-weight: bold; margin: 0">Out of Shield Matchup</h2>
+        <img src="~/images/vs.png" style="width: 35%; margin: 15px 0" />
+        <br />
+        <a href="/Character/@(ViewContext.RouteData.Values["id2"])/@(ViewContext.RouteData.Values["id"])"
+            class="btn btn-primary" role="button">&lArr; Switch &rArr;</a>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-3">
         <a href="/Character/@(ViewContext.RouteData.Values["id2"])">
-            <h3 style="text-align: center; background-color: red; color: white; margin: 0 auto; padding: 5px;
-                        text-transform: uppercase; font-weight: bold; border-top-left-radius: 10px;
-                        border-top-right-radius: 10px">
+            <h2 style="text-align: center; background-color: red; color: white; margin: 0 auto; padding: 5px;
+                    text-transform: uppercase; font-weight: bold; border-top-left-radius: 10px;
+                    border-top-right-radius: 10px">
                 @b.Name
-            </h3>
+            </h2>
         </a>
         <img src="@b.getImagePath()" style="background-color: white; width: 100%;
-            border-bottom-left-radius: 10px; border-bottom-right-radius: 10px" />
+        border-bottom-left-radius: 10px; border-bottom-right-radius: 10px" />
     </div>
+    <div class="col-sm-1"></div>
 </div>
-<br />
-<div>
-    <table id="fw" class="row-border stripe order-column">
 
-            <thead>
-                <tr style="background-color: whitesmoke; color: black; font-weight: bold">
-                    <th>Punish Attack</th>
-                    <th>Normal</th>
-                    <th>Perfect</th>
-                    <th>Incoming Attack</th>
-                </tr>
-            </thead>
-            <tbody>
-                @{
-                    foreach (FrameByFrame.Models.Action z in b.getActions())
+<div style="margin-top: 25px">
+    <table id="fw" class="row-border stripe order-column" style="margin-top: 25px">
+
+        <thead>
+            <tr style="background-color: whitesmoke; color: black; font-weight: bold">
+                <th>Punish Attack</th>
+                <th>Normal</th>
+                <th>Perfect</th>
+                <th>Incoming Attack</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (FrameByFrame.Models.Action z in b.getActions())
+                {
+
+                    foreach (Tuple
+                    <FrameByFrame.Models.Action, Window>
+                        t in a.getFrameWindows(z))
                     {
-
-                        foreach (Tuple
-                        <FrameByFrame.Models.Action, Window>
-                            t in a.getFrameWindows(z))
-                        {
-                            <tr style="border: 1px solid silver;">
-                                <td style="color:black">@t.Item1.Name</td>
-                                <td style="color:@(t.Item2.Normal > 0 ? "limegreen" : "#f00")">@t.Item2.Normal.ToString("+#;-#;0")</td>
-                                <td style="color:@(t.Item2.Perfect > 0 ? "limegreen" : "#f00")">@t.Item2.Perfect.ToString("+#;-#;0")</td>
-                                <td style="color:black">@z.Name</td>
-                            </tr>
-                        }
-
+                        <tr style="border: 1px solid silver;">
+                            <td style="color:black">@t.Item1.Name</td>
+                            <td style="color:@(t.Item2.Normal > 0 ? "limegreen" : "#f00")">@t.Item2.Normal.ToString("+#;-#;0")</td>
+                            <td style="color:@(t.Item2.Perfect > 0 ? "limegreen" : "#f00")">@t.Item2.Perfect.ToString("+#;-#;0")</td>
+                            <td style="color:black">@z.Name</td>
+                        </tr>
                     }
 
                 }
-            </tbody>
+
+            }
+        </tbody>
     </table>
-    </div>
+</div>
 <br />
